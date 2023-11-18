@@ -1,11 +1,35 @@
 {
   "version": 3,
   "targets": {
-    "net7.0": {}
+    "net7.0": {
+      "Moment.js/2.29.4": {
+        "type": "package"
+      }
+    }
   },
-  "libraries": {},
+  "libraries": {
+    "Moment.js/2.29.4": {
+      "sha512": "/k3aQBnvqF/s55LBdBdvoK8afHfdtWZgGZaLHssCghBAbYvcViVOUNdC+JLIHYn6eotqzsKsfs0Qql46Hg+28w==",
+      "type": "package",
+      "path": "moment.js/2.29.4",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Content/Scripts/moment-with-locales.js",
+        "Content/Scripts/moment-with-locales.min.js",
+        "Content/Scripts/moment-with-locales.min.js.map",
+        "Content/Scripts/moment.js",
+        "Content/Scripts/moment.min.js",
+        "Content/Scripts/moment.min.js.map",
+        "moment.js.2.29.4.nupkg.sha512",
+        "moment.js.nuspec"
+      ]
+    }
+  },
   "projectFileDependencyGroups": {
-    "net7.0": []
+    "net7.0": [
+      "Moment.js >= 2.29.4"
+    ]
   },
   "packageFolders": {
     "C:\\Users\\ramin\\.nuget\\packages\\": {}
@@ -43,6 +67,12 @@
     "frameworks": {
       "net7.0": {
         "targetAlias": "net7.0",
+        "dependencies": {
+          "Moment.js": {
+            "target": "Package",
+            "version": "[2.29.4, )"
+          }
+        },
         "imports": [
           "net461",
           "net462",

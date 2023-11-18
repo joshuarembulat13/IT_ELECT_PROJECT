@@ -1,8 +1,121 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Swift Hotel";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="main">
+    <div class="focusContainer">
+        <h2>Where Comfort Meets Velocity, Your Journey to Exceptional Hospitality."</h2>
+        <p>a luxurious retreat nestled in the heart of the city, offering a seamless blend of modern elegance and
+            timeless
+            charm. With its sophisticated decor, impeccable service, and state-of-the-art amenities, guests are treated
+            to
+            an indulgent experience that reflects the epitome of comfort and style.</p>
+    </div>
+    <div class="bookingContainer">
+        <form>
+            <div class="startDate">
+                <label>Start Date</label>
+                <input type="date" id="myStartInputDate" />
+            </div>
+            <div class="endDate">
+                <label>End Date</label>
+                <input type="date" id="myEndInputDate" />
+            </div>
+            <div class="pax">
+                <label>Pax</label>
+                <input type="number" id="enterPax" />
+            </div>
+            <button>Book Now</button>
+        </form>
+    </div>
+</div>
+
+<div class="about">
+    <div class="title">
+
+    </div>
+    <div class="aboutContainer">
+        <div class="imageContainer">
+            <img src="@Url.Content("../images/bgabout.jpg")" height="700px" width="100%" />
+        </div>
+        <div>
+            <div class="detachContainer">
+                <h2>Unwind in Style, Where Every Stay is a Symphony of Comfort and Convenience</h2>
+                <p>
+                    Discover a realm of convenience and sophistication with our range of exceptional amenities. Immerse
+                    yourself in the tranquility of our lush swimming pool area, a haven of relaxation where the world's
+                    worries fade away. Enjoy seamless connectivity with high-speed Wi-Fi throughout the property,
+                    keeping
+                    you in touch with the outside world even as you revel in the hotel's opulent surroundings. Swift
+                    Hotel's
+                    commitment to comfort is further exemplified by our complimentary parking, providing a stress-free
+                    experience from the moment you arrive. Whether you're seeking a serene escape or a productive
+                    sanctuary,
+                    Swift Hotel promises an unparalleled journey into luxury.</p>
+                <button>Book Now</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="roomType">
+    <div class="title">
+        <h2>Exlusive Gateway Offers</h2>
+        <p>
+            Experience unparalleled luxury and tranquility in our meticulously designed rooms at Swift Hotel, where
+            every detail is crafted to elevate your stay into a seamless blend of comfort and sophistication.
+        </p>
+    </div>
+    <div class="roomContainer">
+        <div class="box">
+            <img src="@Url.Content("../images/room1.jpg")"
+                style="object-fit: cover; width: 380px; height: 250px; object-position: center;" />
+            <div class="night">
+                <span>Standard Room</span>
+                <span>
+                    @string.Format("₱{0:N2}", 2400)/night
+                </span>
+            </div>
+        </div>
+        <div class="box">
+            <img src="@Url.Content("../images/room2.jpg")"
+                style="object-fit: cover; width: 380px; height: 250px; object-position: center;" />
+            <div class="night">
+                <span>Deluxe Room</span>
+                <span>
+                    @string.Format("₱{0:N2}", 2400)/night
+                </span>
+            </div>
+        </div>
+        <div class="box">
+            <img src="@Url.Content("../images/room3.jpg")"
+                style="object-fit: cover; width: 380px; height: 250px; object-position: center;" />
+            <div class="night">
+                <span>Supreme Room</span>
+                <span>
+                    @string.Format("₱{0:N2}", 2400)/night
+                </span>
+            </div>
+        </div>
+        <div class="box">
+            <img src="@Url.Content("../images/room4.jpg")"
+                style="object-fit: cover; width: 380px; height: 250px; object-position: center;" />
+            <div class="night">
+                <span>Standard Room</span>
+                <span>
+                    @string.Format("₱{0:N2}", 2400)/night
+                </span>
+            </div>
+        </div>
+        <div class="box">
+            <img src="@Url.Content("../images/room5.jpg")"
+                style="object-fit: cover; width: 380px; height: 250px; object-position: center;" />
+            <div class="night">
+                <span>Family Room</span>
+                <span>
+                    @string.Format("₱{0:N2}", 2400)/night
+                </span>
+            </div>
+        </div>
+    </div>
 </div>

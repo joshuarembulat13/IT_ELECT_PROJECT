@@ -6,4 +6,8 @@
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Moment.js" Version="2.29.4" />
+  </ItemGroup>
+
 </Project>

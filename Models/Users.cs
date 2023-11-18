@@ -1,23 +1,23 @@
-﻿using System;
+﻿// using System;
 
-public class Class1
-{
+// public class Class1
+// {
 
-    public enum Role
-    {
+//     public enum Role
+//     {
 
-        Customer, Admin
+//         Customer, Admin
 
-    }
+//     }
 
-    public Class1()
-    {
-
-
-    public string password { get; set; }
-    public string email { get; set; }
-    public int profileID { get; set; }
+//     public Class1()
+//     {
 
 
-}
-}
+//     public string password { get; set; }
+//     public string email { get; set; }
+//     public int profileID { get; set; }
+
+
+// }
+// }
