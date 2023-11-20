@@ -1,25 +1,27 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\ramin\\Desktop\\IT-ELEC\\Finals\\Finals.csproj": {}
+    "C:\\Users\\Allyson\\source\\repos\\IT_ELECT_PROJECT\\Finals.csproj": {}
   },
   "projects": {
-    "C:\\Users\\ramin\\Desktop\\IT-ELEC\\Finals\\Finals.csproj": {
+    "C:\\Users\\Allyson\\source\\repos\\IT_ELECT_PROJECT\\Finals.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\ramin\\Desktop\\IT-ELEC\\Finals\\Finals.csproj",
+        "projectUniqueName": "C:\\Users\\Allyson\\source\\repos\\IT_ELECT_PROJECT\\Finals.csproj",
         "projectName": "Finals",
-        "projectPath": "C:\\Users\\ramin\\Desktop\\IT-ELEC\\Finals\\Finals.csproj",
-        "packagesPath": "C:\\Users\\ramin\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\ramin\\Desktop\\IT-ELEC\\Finals\\obj\\",
+        "projectPath": "C:\\Users\\Allyson\\source\\repos\\IT_ELECT_PROJECT\\Finals.csproj",
+        "packagesPath": "C:\\Users\\Allyson\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Allyson\\source\\repos\\IT_ELECT_PROJECT\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\ramin\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\Allyson\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net7.0"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {

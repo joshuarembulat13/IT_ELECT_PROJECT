@@ -7,18 +7,19 @@
     <title>@ViewData["Title"] - Finals</title>
 
     <link rel="stylesheet" type="text/css" href="~/css/homepage.module.css" />
+
 </head>
 
 <body>
     <header>
         <div class="navbar">
-
             <div class="controller">
-                <a href="/guestTracker">Guest Tracker</a>
-                <a href="/login">Login</a>
+                <a href="@Url.Action("Index", "Home")">Guest Tracker</a>
+                <a href="@Url.Action("Login", "User")">Login</a>
             </div>
         </div>
     </header>
+
     <div class="container">
         <main role="main" class="pb-3">
             @RenderBody()
