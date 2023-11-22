@@ -1,18 +1,20 @@
-﻿// using System;
+﻿using System;
+using System.ComponentModel.DataAnnotations;
 
-// public class Class1
-// {
+public class Profile
+{
 
-//     public Class1()
-//     {
+    [Key]
+    public int profileID { get; set; }
+    [Required(ErrorMessage = "Fullname is required")]
+    public string fullName { get; set; }
+    [Required(ErrorMessage = "Address is required")]
+    public string address { get; set; }
+    [Required(ErrorMessage = "Nationality is required")]
+    public string nationality { get; set; }
+    [Required(ErrorMessage = "Phone Number is required")]
+    public int phone { get; set; }
+    public DateTime birthday { get; set; }
 
 
-//     public string fullName { get; set; }
-//     public string address { get; set; }
-//     public string nationality { get; set; }
-//     public int phone { get; set; }
-//     public DateTime birthday { get; set; }
-
-
-// }
-// }
+}

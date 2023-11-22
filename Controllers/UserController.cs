@@ -10,13 +10,13 @@ namespace Finals.Controllers
         new User { Username = "user2", Password = "password2" }
     };
 
-        public ActionResult Login()
+        public IActionResult Login()
         {
             return View();
         }
 
         [HttpPost]
-        public ActionResult Login(User model)
+        public IActionResult Login(User model)
         {
             var user = _users.FirstOrDefault(u => u.Username == model.Username && u.Password == model.Password);
 
