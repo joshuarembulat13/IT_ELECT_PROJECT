@@ -23,7 +23,7 @@ public class HomeController : Controller
         return View();
     }
 
-    public IActionResult FAQs()
+    public IActionResult Tracker()
     {
         return View();
     }

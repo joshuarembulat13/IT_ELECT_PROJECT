@@ -4,12 +4,15 @@
 
 <div class="main">
     <div class="focusContainer">
-        <h2>Where Comfort Meets Velocity, Your Journey to Exceptional Hospitality."</h2>
-        <p>a luxurious retreat nestled in the heart of the city, offering a seamless blend of modern elegance and
-            timeless
-            charm. With its sophisticated decor, impeccable service, and state-of-the-art amenities, guests are treated
-            to
-            an indulgent experience that reflects the epitome of comfort and style.</p>
+        <div class="fc">
+            <h2>Where Comfort Meets Velocity, Your Journey to Exceptional Hospitality.</h2>
+            <p>a luxurious retreat nestled in the heart of the city, offering a seamless blend of modern elegance and
+                timeless
+                charm. With its sophisticated decor, impeccable service, and state-of-the-art amenities, guests are
+                treated
+                to
+                an indulgent experience that reflects the epitome of comfort and style.</p>
+        </div>
     </div>
     <div class="bookingContainer">
         <form>
@@ -25,7 +28,7 @@
                 <label>Pax</label>
                 <input type="number" id="enterPax" />
             </div>
-            <button>Book Now</button>
+            <button onclick="window.location.href=`@Url.Action("Index", "Booking" )">Book Now</button>
         </form>
     </div>
 </div>
@@ -116,6 +119,43 @@
                     @string.Format("₱{0:N2}", 2400)/night
                 </span>
             </div>
+        </div>
+    </div>
+</div>
+
+<div class="faqss">
+    <div class="title">
+        <h2>Frequently Asked Questions</h2>
+    </div>
+    <div class="faqsFlexContainer">
+        <div class="faqsCard">
+            <h2>Can I see photos of the hotel rooms before booking?</h2>
+            <p>Yes, each hotel listing includes photos and detailed information about the rooms and amenities.</p>
+        </div>
+        <div class="faqsCard">
+            <h2>Are the prices on Swift Hotel per person or per room?</h2>
+            <p>Prices are generally per room, per night. The number of guests included in the price is specified
+                during the booking process.</p>
+        </div>
+        <div class="faqsCard">
+            <h2>Do hotels on Swift Hotel include breakfast?</h2>
+            <p>Some hotels offer complimentary breakfast, while others may charge an additional fee. Check the hotel
+                details for this information.</p>
+        </div>
+        <div class="faqsCard">
+            <h2>How do I contact Swift Hotel customer support?</h2>
+            <p>Visit our "Contact Us" page for information on reaching our customer support team via email or phone.
+            </p>
+        </div>
+        <div class="faqsCard">
+            <h2>What do I do if I encounter issues during the booking process?</h2>
+            <p>Contact our customer support for assistance, and we'll be happy to help you resolve any issues.</p>
+        </div>
+        <div class="faqsCard">
+            <h2>Are there any special promotions or discounts available?
+            </h2>
+            <p>Check our website regularly for promotions, and subscribe to our newsletter to receive exclusive
+                offers.</p>
         </div>
     </div>
 </div>
