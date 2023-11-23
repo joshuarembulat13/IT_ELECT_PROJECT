@@ -16,30 +16,31 @@
             <!-- Pills content -->
             <div class="tab-content">
                 <div class="tab-pane fade show active" id="pills-register" role="tabpanel" aria-labelledby="tab-register">
-                    <form>
+                    <form asp-action="Register" asp-controller="User" method="post">
+
 
                         <!-- Email input for registration -->
                         <div class="form-group mb-4">
                             <label for="registerEmail">Email</label>
-                            <input type="email" id="registerEmail" class="form-control" />
+                            <input type="email" id="registerEmail" name="Email" class="form-control" />
                         </div>
 
                         <!-- Username input -->
                         <div class="form-group mb-4">
                             <label for="registerUsername">Username</label>
-                            <input type="text" id="registerUsername" class="form-control" />
+                            <input type="text" id="registerUsername" name="DisplayName" class="form-control" />
                         </div>
 
                         <!-- Password input -->
                         <div class="form-group mb-4">
                             <label for="registerPassword">Password</label>
-                            <input type="password" id="registerPassword" class="form-control" />
+                            <input type="password" id="registerPassword" name="PasswordHash" class="form-control" />
                         </div>
 
                         <!-- Confirm Password input -->
                         <div class="form-group mb-4">
                             <label for="confirmPassword">Confirm Password</label>
-                            <input type="password" id="confirmPassword" class="form-control" />
+                            <input type="password" id="confirmPassword" name="ConfirmPassword" class="form-control" />
                         </div>
 
                         <!-- Submit button -->

@@ -1,60 +1,115 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.JSInterop;
-using System.Diagnostics;
+using Microsoft.AspNetCore.Identity;
+using System.Threading.Tasks;
+using Finals.data;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Finals.Controllers
 {
     public class UserController : Controller
-
     {
+        private readonly UserManager<User> _userManager;
+        private readonly SignInManager<User> _signInManager;
+        private readonly ApplicationDbContext _dbContext;
+        private readonly ILogger<UserController> _logger;
 
-        private static List<User> _users = new List<User>
+        public UserController(UserManager<User> userManager, SignInManager<User> signInManager, ApplicationDbContext dbContext, ILogger<UserController> logger)
         {
-            new User { Username = "user1", Password = "password1" },
-            new User { Username = "user2", Password = "password2" }
-        };
-
+            _userManager = userManager;
+            _signInManager = signInManager;
+            _dbContext = dbContext;
+            _logger = logger;
+        }
         public IActionResult Login()
         {
             return View();
         }
-        
-        [HttpPost]
-        public IActionResult Register(User model)
+
+        public ActionResult Register()
         {
-            // Check if the username is already taken
-            if (_users.Any(u => u.Username == model.Username))
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Register(User model)
+        {
+            if (model == null || string.IsNullOrEmpty(model.DisplayName))
+            {
+                ViewBag.ErrorMessage = "Username cannot be null or empty.";
+                return View();
+            }
+
+            var existingUser = await _userManager.FindByNameAsync(model.DisplayName);
+            if (existingUser != null)
             {
                 ViewBag.ErrorMessage = "Username is already taken. Please choose a different one.";
                 return View();
             }
 
-            // Add the new user to the list
-            _users.Add(model);
+            var result = await _userManager.CreateAsync(new User
+            {
+                DisplayName = model.DisplayName,
+                UserName = model.DisplayName,
+                PasswordHash = _userManager.PasswordHasher.HashPassword(null, model.PasswordHash)
+            });
 
-            // You can add authentication logic here if needed
+            if (result.Succeeded)
+            {
+                return RedirectToAction("Login");
+            }
+            else
+            {
+                foreach (var error in result.Errors)
+                {
+                    ModelState.AddModelError(string.Empty, error.Description);
+                }
 
-            // Redirect to the login page after successful registration
-            return RedirectToAction("Login");
+                return View();
+            }
         }
 
+        [AllowAnonymous]
         [HttpPost]
-        public IActionResult Login(User model)
+        public async Task<IActionResult> Login(User model)
         {
-            var user = _users.FirstOrDefault(u => u.Username == model.Username && u.Password == model.Password);
+            if (model == null || string.IsNullOrEmpty(model.DisplayName))
+            {
+                ViewBag.ErrorMessage = "Please provide a valid username.";
+                return View();
+            }
+
+            var user = await _userManager.FindByNameAsync(model.DisplayName);
 
             if (user != null)
             {
-                // Authentication successful
-                // You can add authentication logic here (e.g., Forms Authentication, Identity, etc.)
+                await _signInManager.SignInAsync(user, isPersistent: false);
+
+                // Log successful login
+                _logger.LogInformation($"User {user.DisplayName} authenticated: {User.Identity.IsAuthenticated}");
+
+                // Redirect to the index page after successful login
                 return RedirectToAction("Index", "Home");
             }
             else
             {
-                // Authentication failed
                 ViewBag.ErrorMessage = "Invalid username or password";
                 return View();
             }
+
         }
+
+
+
+        public async Task<IActionResult> Logout()
+        {
+            await _signInManager.SignOutAsync();
+
+            // Redirect to the login page after logout
+            return RedirectToAction("Login");
+        }
+
+
+
+
     }
 }

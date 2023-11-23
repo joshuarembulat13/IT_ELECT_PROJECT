@@ -1,9 +1,11 @@
 ﻿using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using Finals.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Finals.Controllers;
 
+[AllowAnonymous]
 public class HomeController : Controller
 {
     private readonly ILogger<HomeController> _logger;
@@ -15,6 +17,8 @@ public class HomeController : Controller
 
     public IActionResult Index()
     {
+        _logger.LogInformation("HomeController - Index action reached.");
+
         return View();
     }
 
