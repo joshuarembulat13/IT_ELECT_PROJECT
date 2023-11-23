@@ -1,7 +1,10 @@
-﻿<!DOCTYPE html>
+﻿<!-- _Layout.cshtml -->
+
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
+    <!-- Your head content -->
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - Finals</title>
@@ -14,8 +17,21 @@
     <header>
         <div class="navbar">
             <div class="controller">
-                <a href="@Url.Action("Tracker", "Home")">Guest Tracker</a>
-                <a href="@Url.Action("Login", "User")">Login</a>
+                <!-- Add the "Swift Hotel" link -->
+                <a id="swiftHotelLink" href="@Url.Action("Index", "Home")">Swift Hotel</a>
+
+
+                <a id="guestTrackerLink" href="@Url.Action("Tracker", "Home")">Guest Tracker</a>
+
+                <!-- Display username when logged in -->
+                @if (User.Identity.IsAuthenticated)
+                {
+                    <a id="loginLink" href="@Url.Action("Login", "User")">@User.Identity.Name</a>
+                }
+                else
+                {
+                    <a id="loginLink" href="@Url.Action("Login", "User")">Login</a>
+                }
             </div>
         </div>
     </header>

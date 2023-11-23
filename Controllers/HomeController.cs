@@ -19,6 +19,12 @@ public class HomeController : Controller
     {
         _logger.LogInformation("HomeController - Index action reached.");
 
+        // Retrieve the username from the authentication context
+        string username = User.Identity.IsAuthenticated ? User.Identity.Name : null;
+
+        // Pass the username to the view
+        ViewBag.Username = username;
+
         return View();
     }
 
