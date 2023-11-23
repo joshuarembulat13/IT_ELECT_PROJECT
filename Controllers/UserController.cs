@@ -1,9 +1,13 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.JSInterop;
+using System.Diagnostics;
 
 namespace Finals.Controllers
 {
     public class UserController : Controller
+
     {
+
         private static List<User> _users = new List<User>
     {
         new User { Username = "user1", Password = "password1" },
@@ -14,7 +18,7 @@ namespace Finals.Controllers
         {
             return View();
         }
-
+        
         [HttpPost]
         public IActionResult Login(User model)
         {

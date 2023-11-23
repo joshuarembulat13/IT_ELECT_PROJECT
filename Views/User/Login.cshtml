@@ -1,8 +1,17 @@
-﻿@page
+﻿@using Microsoft.JSInterop;
+@inject IJSRuntime JsRuntime
 @model User
 
 @{
     ViewBag.Title = "Login";
+    @if (ViewData["ErrorMessage"] != null)
+    {
+        <script type="text/javascript">
+            window.onload = function () {
+                alert("@ViewData["ErrorMessage"]");
+            };
+        </script>
+    }
 }
 
 <!-- Add Bootstrap stylesheet link -->
@@ -17,20 +26,22 @@
             <!-- Pills content -->
             <div class="tab-content">
                 <div class="tab-pane fade show active" id="pills-login" role="tabpanel" aria-labelledby="tab-login">
+                    @using (@Html.BeginForm("Login", "User", FormMethod.Post , new { @class = "form-signin" }))
+                    {
                     <form>
-
+                        
                         <!-- Email input -->
                         <div class="form-group mb-4">
-                            <label for="loginName">Email or username</label>
-                            <input type="email" id="loginName" class="form-control" />
+                            <label for="login">Email or username</label>
+                                <input type="text" asp-for="Username" id="login" class="form-control" />
                         </div>
 
                         <!-- Password input -->
                         <div class="form-group mb-4">
-                            <label for="loginPassword">Password</label>
-                            <input type="password" id="loginPassword" class="form-control" />
+                            <label for="password">Password</label>
+                                <input type="password" asp-for="Password" id="password" class="form-control" />
                         </div>
-
+                        
                         <!-- 2 column grid layout -->
                         <div class="row mb-4">
                             <div class="col-md-6 d-flex justify-content-center">
@@ -49,9 +60,10 @@
 
                         <!-- Submit button -->
                         <button type="submit" class="btn btn-primary btn-block mb-4">Sign in</button>
-
+                        
                         <!-- Register buttons -->
                     </form>
+                    }
                 </div>
             </div>
             <!-- Pills content -->
