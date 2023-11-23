@@ -9,6 +9,7 @@
 //     public string email { get; set; }
 //     public int profileID { get; set; }
 
+using Microsoft.AspNetCore.Identity;
 using System.ComponentModel.DataAnnotations;
 
 public enum Role
@@ -19,7 +20,7 @@ public enum Role
 }
 
 
-public class User
+public class User : IdentityUser
 {
     [Key]
     public int userID { get; set; }

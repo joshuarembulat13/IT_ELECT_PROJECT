@@ -43,7 +43,7 @@
 
                             <div class="col-md-6 d-flex justify-content-center">
                                 <!-- Simple link -->
-                                <a href="#!">Forgot password?</a>
+                                <a href="@Url.Action("ForgotPassword", "User")">Forgot Password?</a>
                             </div>
                         </div>
 
@@ -51,11 +51,14 @@
                         <button type="submit" class="btn btn-primary btn-block mb-4">Sign in</button>
 
                         <!-- Register buttons -->
+                        <div class="text-center">
+                            <p>Not a member?<a href="@Url.Action("Register", "User")">Register</a></p>
+                        </div>
+
                     </form>
                 </div>
             </div>
             <!-- Pills content -->
         </div>
     </div>
-</div>
 </div>
