@@ -10,22 +10,22 @@ namespace Finals.Controllers
 
         private static List<User> _users = new List<User>
         {
-            new User { Username = "user1", Password = "password1" },
-            new User { Username = "user2", Password = "password2" }
+            new User { Email = "user1", Password = "password1" },
+            new User { Email = "user2", Password = "password2" }
         };
 
         public IActionResult Login()
         {
             return View();
         }
-        
+
         [HttpPost]
         public IActionResult Register(User model)
         {
-            // Check if the username is already taken
-            if (_users.Any(u => u.Username == model.Username))
+            // Check if the Email is already taken
+            if (_users.Any(u => u.Email == model.Email))
             {
-                ViewBag.ErrorMessage = "Username is already taken. Please choose a different one.";
+                ViewBag.ErrorMessage = "Email is already taken. Please choose a different one.";
                 return View();
             }
 
@@ -41,7 +41,7 @@ namespace Finals.Controllers
         [HttpPost]
         public IActionResult Login(User model)
         {
-            var user = _users.FirstOrDefault(u => u.Username == model.Username && u.Password == model.Password);
+            var user = _users.FirstOrDefault(u => u.Email == model.Email && u.Password == model.Password);
 
             if (user != null)
             {

@@ -4,10 +4,104 @@
    display: flex;
    align-items: center;
    justify-content: center;
+   flex-direction: column;
+   gap: 15px;
+   .title {
+      font-family: "Poppins";
+   }
    form {
       width: 500px;
       display: flex;
       align-items: center;
       justify-content: center;
+      align-items: center;
+      gap: 5px;
+      input,
+      button {
+         width: 500px;
+         height: 50px;
+         border-radius: 5px;
+         box-shadow: 0px 0px 3px 0px #ccc;
+         outline: none;
+         border: none;
+      }
+
+      input {
+         padding: 10px;
+      }
+
+      button {
+         width: 65px;
+         background-color: #ffd700;
+      }
+   }
+
+   .trackerContainer {
+      width: 500px;
+      height: 250px;
+      box-shadow: 0px 0px 3px 0px #ccc;
+      border-radius: 5px;
+      padding: 10px;
+      .header {
+         width: 100%;
+         height: 60px;
+         display: flex;
+         align-items: center;
+         justify-content: space-between;
+         h2 {
+            font-family: "Poppins";
+            font-size: 18px;
+            color: #2b2b2b;
+            font-weight: 600;
+         }
+         span {
+            border-radius: 3px;
+            font-size: 16px;
+            font-family: "Oxygen";
+         }
+         span[about="Paid"] {
+            color: #32cd32;
+         }
+         span[about="Pending"] {
+            color: #ffa500;
+         }
+         span[about="Canceled"] {
+            color: #dc143c;
+         }
+      }
+      .contacts {
+         width: 100%;
+         height: 100px;
+         display: flex;
+         flex-direction: column;
+         gap: 5px;
+         h2 {
+            font-size: 22px;
+            font-family: "Poppins";
+            font-weight: 500;
+         }
+         span {
+            font-family: "Oxygen";
+         }
+      }
+      .room {
+         width: 100%;
+         height: 60px;
+         display: flex;
+         flex-direction: column;
+         gap: 5px;
+         div {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            svg {
+               stroke-width: 1.7px;
+            }
+            span {
+               font-family: "Oxygen";
+               font-weight: 500;
+            }
+         }
+      }
    }
 }

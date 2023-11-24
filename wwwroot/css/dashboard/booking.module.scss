@@ -1,0 +1,85 @@
+.bookingContainer {
+   width: 100%;
+   display: flex;
+   flex-direction: column;
+   gap: 15px;
+
+   .title {
+      font-family: "Poppins";
+
+      font-weight: 500;
+   }
+   .bookingRoom {
+      width: 100%;
+      .bookingTitle {
+         font-weight: 16px;
+         font-family: "Poppins";
+         font-weight: 500;
+      }
+      .cardGroup {
+         display: flex;
+         gap: 10px;
+         .card {
+            width: 300px;
+            box-shadow: 0px 0px 3px 0px #ccc;
+            padding: 10px;
+            .cardHeader {
+               width: 100%;
+               display: flex;
+               height: 60px;
+               justify-content: space-between;
+               align-items: center;
+               h2 {
+                  font-size: 18px;
+                  font-family: "Poppins";
+                  font-weight: 500;
+               }
+               span {
+                  font-family: "Oxygen";
+                  font-size: 16px;
+               }
+               span[about="Paid"] {
+                  color: #32cd32;
+               }
+               span[about="Pending"] {
+                  color: #ffa500;
+               }
+               span[about="Canceled"] {
+                  color: #dc143c;
+               }
+            }
+            .cardBody {
+               display: flex;
+               align-items: center;
+               height: 30px;
+               .cardDate {
+                  width: 100%;
+                  display: flex;
+                  align-items: center;
+                  gap: 10px;
+                  svg {
+                     stroke-width: 1.5px;
+                  }
+                  span {
+                     font-family: "Oxygen";
+                  }
+               }
+               .cardPax {
+                  width: 100%;
+                  display: flex;
+                  align-items: center;
+                  justify-content: flex-end;
+                  gap: 10px;
+                  span {
+                     font-size: 16px;
+                     font-family: "Oxygen";
+                  }
+                  svg {
+                     stroke-width: 1.5px;
+                  }
+               }
+            }
+         }
+      }
+   }
+}

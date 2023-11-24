@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Dashboard</title>
+    <link rel="stylesheet" type="text/css" href="~/css/dashboard/overview.module.css" />
+    <link rel="stylesheet" type="text/css" href="~/css/dashboard/admin.module.css" />
+    <link rel="stylesheet" type="text/css" href="~/css/dashboard/booking.module.css" />
+</head>
+
+<body>
+    <header>
+        <div class="navbar">
+
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="sidebar">
+            <div class="titleHeader">
+                <h2>Swift Hotel</h2>
+            </div>
+            <ul>
+                <li>
+
+                    <button onclick="
+                        window.location.href='@Url.Action("Admin", "Dashboard")'">
+                        <svg xmlns=" http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24"
+                            height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                            <path d="M5 12l-2 0l9 -9l9 9l-2 0" />
+                            <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+                            <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+                        </svg>
+                        <span>Home</span>
+                    </button>
+                </li>
+                <li>
+                    <button class="window.location.href='@Url.Action("Booking", "Dashboard")' ? nonactve : active "
+                        onclick="window.location.href='@Url.Action("Booking", "Dashboard")'">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar" width="24"
+                            height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                            <path d="M4 7a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2v-12z" />
+                            <path d="M16 3v4" />
+                            <path d="M8 3v4" />
+                            <path d="M4 11h16" />
+                            <path d="M11 15h1" />
+                            <path d="M12 15v3" />
+                        </svg>
+                        <span>Booking</span>
+
+                    </button>
+
+                </li>
+                <li>
+                    <button onclick="window.location.href='@Url.Action("Settings", "Dashboard")'">
+                        <svg xmlns=" http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-settings"
+                            width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
+                            fill="none" stroke-linecap="round" stroke-linejoin="round">
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                            <path
+                                d="M10.325 4.317c.426 -1.756 2.924 -1.756 3.35 0a1.724 1.724 0 0 0 2.573 1.066c1.543 -.94 3.31 .826 2.37 2.37a1.724 1.724 0 0 0 1.065 2.572c1.756 .426 1.756 2.924 0 3.35a1.724 1.724 0 0 0 -1.066 2.573c.94 1.543 -.826 3.31 -2.37 2.37a1.724 1.724 0 0 0 -2.572 1.065c-.426 1.756 -2.924 1.756 -3.35 0a1.724 1.724 0 0 0 -2.573 -1.066c-1.543 .94 -3.31 -.826 -2.37 -2.37a1.724 1.724 0 0 0 -1.065 -2.572c-1.756 -.426 -1.756 -2.924 0 -3.35a1.724 1.724 0 0 0 1.066 -2.573c-.94 -1.543 .826 -3.31 2.37 -2.37c1 .608 2.296 .07 2.572 -1.065z" />
+                            <path d="M9 12a3 3 0 1 0 6 0a3 3 0 0 0 -6 0" />
+                        </svg>
+                        <span>Settings</span>
+                    </button>
+                </li>
+            </ul>
+        </div>
+        <div class="secondContainer">
+            <div class="header">
+                <div></div>
+            </div>
+            <div class="subContainer">
+                @RenderBody()
+            </div>
+        </div>
+    </div>
+
+    @await RenderSectionAsync("Scripts", required: false)
+
+</body>
+
+</html>
