@@ -1,10 +1,6 @@
 using Finals.data;
-using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Identity;
+using Finals.Services;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -14,6 +10,9 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 
 builder.Services.AddDefaultIdentity<User>()
     .AddEntityFrameworkStores<ApplicationDbContext>();
+
+// Add service registration for BookingService
+builder.Services.AddScoped<BookingService>();
 
 builder.Services.AddControllersWithViews();
 
@@ -27,6 +26,15 @@ else
 {
     app.UseExceptionHandler("/Home/Error");
     app.UseHsts();
+    // Add logging or custom error handling for production
+}
+
+// Database migration
+using (var scope = app.Services.CreateScope())
+{
+    var services = scope.ServiceProvider;
+    var dbContext = services.GetRequiredService<ApplicationDbContext>();
+    dbContext.Database.Migrate();
 }
 
 app.UseHttpsRedirection();

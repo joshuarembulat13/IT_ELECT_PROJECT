@@ -12,5 +12,10 @@ namespace Finals.Controllers
         {
             return View();
         }
+        public IActionResult StandardRoom()
+        {
+            // You can add any necessary logic here
+            return View();
+        }
     }
 }

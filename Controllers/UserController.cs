@@ -97,7 +97,7 @@ namespace Finals.Controllers
             }
 
         }
-            
+
 
 
         public async Task<IActionResult> Logout()
@@ -109,6 +109,11 @@ namespace Finals.Controllers
         }
 
 
+
+        public IActionResult StandardRoom()
+        {
+            return View();
+        }
 
 
     }
