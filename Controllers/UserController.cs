@@ -39,17 +39,34 @@ namespace Finals.Controllers
                 return View();
             }
 
+            // Check if the username is already taken
             var existingUser = await _userManager.FindByNameAsync(model.DisplayName);
             if (existingUser != null)
             {
-                ViewBag.ErrorMessage = "Username is already taken. Please choose a different one.";
+                TempData["ErrorMessage"] = "Username is already taken. Please choose a different one.";
                 return View();
             }
 
+            if (model == null || string.IsNullOrEmpty(model.Email))
+            {
+                ViewBag.ErrorMessage = "Email cannot be null or empty.";
+                return View();
+            }
+
+            // Check if the email is already associated with an existing account
+            var existingEmail = await _userManager.FindByEmailAsync(model.Email);
+            if (existingEmail != null)
+            {
+                TempData["ErrorMessageB"] = "Email is already associated with an existing account. Please use a different email.";
+                return View();
+            }
+
+            // Continue with the registration process
             var result = await _userManager.CreateAsync(new User
             {
                 DisplayName = model.DisplayName,
                 UserName = model.DisplayName,
+                Email = model.Email, // Ensure this line is present
                 PasswordHash = _userManager.PasswordHasher.HashPassword(null, model.PasswordHash)
             });
 
@@ -67,6 +84,7 @@ namespace Finals.Controllers
                 return View();
             }
         }
+
 
         [AllowAnonymous]
         [HttpPost]

@@ -23,6 +23,8 @@ public class User : IdentityUser
     public new string PasswordHash { get; set; }
 
 
+
+
     public Role Role { get; set; }
 
     // Computed property for NormalizedUserName
