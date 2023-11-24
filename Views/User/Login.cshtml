@@ -1,33 +1,48 @@
-﻿@using Microsoft.JSInterop;
-@inject IJSRuntime JsRuntime
+﻿@page
 @model User
 
 @{
     ViewBag.Title = "Login";
-    @if (ViewData["ErrorMessage"] != null)
-    {
-        <script type="text/javascript">
-            window.onload = function () {
-                alert("@ViewData["ErrorMessage"]");
-            };
-        </script>
-    }
 }
+
+<style>
+    a#swiftHotelLink {
+    color: #000; /* Default color for other pages */
+    }
+
+    a#loginLink {
+        color: #000; /* Default color for other pages */
+    }
+
+    a#guestTrackerLink {
+        color: #000; /* Default color for other pages */
+    }
+</style>
+
 
 <!-- Add Bootstrap stylesheet link -->
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
 <link rel="stylesheet" type="text/css" href="~/css/login.module.css" />
 
-
 <div class="loginform">
     <div class="row justify-content-center align-items-center" style="min-height: 100vh;">
         <div class="col-md-4">
+            <!-- Display error message -->
+            @if (!string.IsNullOrEmpty(ViewBag.ErrorMessage))
+            {
+                <div class="alert alert-danger" role="alert">
+                    @ViewBag.ErrorMessage
+                </div>
+            }
+
+
             <!-- Pills content -->
             <div class="tab-content">
                 <div class="tab-pane fade show active" id="pills-login" role="tabpanel" aria-labelledby="tab-login">
-                    @using (@Html.BeginForm("Login", "User", FormMethod.Post , new { @class = "form-signin" }))
+                    @if (User.Identity.IsAuthenticated)
                     {
+<<<<<<< HEAD
                     <form>
                         
                         <!-- Email input -->
@@ -35,38 +50,52 @@
                             <label for="login">Email</label>
                                 <input type="text" asp-for="Email" id="login" class="form-control" />
                         </div>
+=======
+                        <p>Welcome, @User.Identity.Name!</p>
+                        <form asp-controller="User" asp-action="Logout" method="post">
+                            <button type="submit" class="btn btn-danger btn-block mb-4">Logout</button>
+                        </form>
+                    }
+                    else
+                    {
+                        <form asp-controller="User" asp-action="Login" method="post">
+                            <!-- Username input -->
+                            <div class="form-group mb-4">
+                                <label for="loginName">Username</label>
+                                <input type="text" id="loginName" name="DisplayName" class="form-control" />
+                            </div>
+>>>>>>> 9428d4dab43e9630e679564bad80db5783551191
 
-                        <!-- Password input -->
-                        <div class="form-group mb-4">
-                            <label for="password">Password</label>
-                                <input type="password" asp-for="Password" id="password" class="form-control" />
-                        </div>
-                        
-                        <!-- 2 column grid layout -->
-                        <div class="row mb-4">
-                            <div class="col-md-6 d-flex justify-content-center">
-                                <!-- Checkbox -->
-                                <div class="form-check mb-3 mb-md-0">
-                                    <input class="form-check-input" type="checkbox" value="" id="loginCheck" checked />
-                                    <label class="form-check-label" for="loginCheck"> Remember me </label>
+                            <!-- Password input -->
+                            <div class="form-group mb-4">
+                                <label for="loginPassword">Password</label>
+                                <input type="password" id="loginPassword" name="PasswordHash" class="form-control" />
+                            </div>
+
+                            <!-- 2 column grid layout -->
+                            <div class="row mb-4">
+                                <div class="col-md-6 d-flex justify-content-center">
+                                    <!-- Checkbox -->
+                                    <div class="form-check mb-3 mb-md-0">
+                                        <input class="form-check-input" type="checkbox" value="" id="loginCheck" checked />
+                                        <label class="form-check-label" for="loginCheck"> Remember me </label>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6 d-flex justify-content-center">
+                                    <!-- Simple link -->
+                                    <a href="@Url.Action("ForgotPassword", "User")">Forgot Password?</a>
                                 </div>
                             </div>
 
-                            <div class="col-md-6 d-flex justify-content-center">
-                                <!-- Simple link -->
-                                <a href="@Url.Action("ForgotPassword", "User")">Forgot Password?</a>
+                            <!-- Submit button -->
+                            <button type="submit" class="btn btn-primary btn-block mb-4">Sign in</button>
+
+                            <!-- Register buttons -->
+                            <div class="text-center">
+                                <p>Not a member?<a href="@Url.Action("Register", "User")">Register</a></p>
                             </div>
-                        </div>
-
-                        <!-- Submit button -->
-                        <button type="submit" class="btn btn-primary btn-block mb-4">Sign in</button>
-                        
-                        <!-- Register buttons -->
-                        <div class="text-center">
-                            <p>Not a member?<a href="@Url.Action("Register", "User")">Register</a></p>
-                        </div>
-
-                    </form>
+                        </form>
                     }
                 </div>
             </div>
