@@ -1,0 +1,120 @@
+@import url("https://fonts.googleapis.com/css2?family=Oxygen&family=Poppins&family=Rubik&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Oxygen&family=Rubik&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap");
+.ss {
+  width: 100%;
+  background-color: #000;
+  height: 500px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  position: relative;
+}
+.ss::before {
+  content: "";
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  background-image: url("../images/background.jpg");
+  display: block;
+  opacity: 0.3;
+  position: absolute;
+  inset: 0;
+}
+.ss .section {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 5px;
+}
+.ss .section h1 {
+  font-family: "Poppins";
+  text-align: center;
+  color: #fff;
+}
+.ss .section p {
+  font-family: "Oxygen";
+  color: #fff;
+}
+.ss .section .section2 {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.form {
+  width: 100%;
+  height: 700px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.form form {
+  width: 500px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  padding: 0 10px;
+}
+.form form h2 {
+  font-size: 22px;
+  font-family: "Poppins";
+}
+.form form input,
+.form form select {
+  width: 100%;
+  height: 35px;
+  box-shadow: 0px 0px 3px 0px #ccc;
+  border: none;
+  padding: 0 10px;
+}
+.form form select {
+  height: 45px;
+  padding: 5px;
+}
+.form form select option {
+  font-size: 16px;
+}
+.form form label {
+  font-family: "Oxygen";
+  font-size: 16px;
+}
+.form form .email,
+.form form .citizenship,
+.form form .phoneNumber {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.form form .fullname {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+@media screen and (max-width: 600px) {
+  .form form .fullname {
+    flex-direction: column;
+  }
+}
+.form form .fullname .firstName,
+.form form .fullname .lastName,
+.form form .fullname .citizenship,
+.form form .fullname .phoneNumber {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.form form button {
+  width: 100%;
+  height: 50px;
+  background-color: #ffd700;
+  border-radius: 3px;
+  font-weight: 600;
+  border: none;
+  color: #000;
+  cursor: pointer;
+}/*# sourceMappingURL=booking.module.css.map */

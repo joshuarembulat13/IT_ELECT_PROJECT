@@ -3,10 +3,18 @@
     Layout = "~/Views/Shared/_DashboardLayout.cshtml";
 }
 
-<div>
+<div class="settingsContainer">
+    <h2>Change Password</h2>
     <form>
-        <input type="text" />
-        <input type="password" />
+
+        <div>
+            <label>Enter your new password</label>
+            <input type="password" />
+        </div>
+        <div>
+            <label>Re-type your new password</label>
+            <input type="password" />
+        </div>
         <button>Submit</button>
     </form>
 </div>

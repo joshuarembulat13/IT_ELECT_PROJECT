@@ -17,9 +17,6 @@ body::-webkit-scrollbar-thumb {
   border-radius: 100px;
 }
 
-header {
-  position: relative;
-}
 header .navbar {
   width: 100%;
   height: 100px;
@@ -36,6 +33,7 @@ header .navbar .controller {
   justify-content: flex-end;
   gap: 20px;
   padding: 0 20px;
+  /* Additional styling for login and register pages */
 }
 header .navbar .controller a {
   background-color: transparent;
@@ -46,6 +44,13 @@ header .navbar .controller a {
   font-family: "Oxygen";
   color: #fff;
   z-index: 999;
+}
+header .navbar .controller a#swiftHotelLink {
+  color: #fff; /* Default color for other pages */
+}
+header .navbar .controller body.login a#loginLink,
+header .navbar .controller body.register a#loginLink {
+  color: #000; /* Change color for login and register pages */
 }
 
 .main {
@@ -72,6 +77,13 @@ header .navbar .controller a {
   align-items: center;
   justify-content: center;
   flex-direction: column;
+}
+.main .focusContainer h1 {
+  font-size: 2rem;
+  z-index: 999;
+  font-family: "Poppins";
+  color: #fff;
+  text-align: center;
 }
 .main .focusContainer h2 {
   font-size: 2rem;
@@ -389,6 +401,10 @@ header .navbar .controller a {
   text-align: center;
   font-size: 16px;
   font-family: "Oxygen";
+}
+.roomType .roomContainer .box a {
+  text-decoration: none; /* Remove underline */
+  color: black; /* Set the color to black or your preferred color */
 }
 
 .faqss {

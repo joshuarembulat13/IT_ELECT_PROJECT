@@ -10,11 +10,8 @@
 }
 .bookingContainer .bookingRoom {
   width: 100%;
-}
-.bookingContainer .bookingRoom .bookingTitle {
-  font-weight: 16px;
-  font-family: "Poppins";
-  font-weight: 500;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 500);
 }
 .bookingContainer .bookingRoom .cardGroup {
   display: flex;

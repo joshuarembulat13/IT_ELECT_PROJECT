@@ -1,20 +1,43 @@
 ﻿@model Booking
 
-<link rel="stylesheet" type="text/css" href="~/css/room.module.css" />
-<div class="focusContainer">
+@{
+    ViewData["Title"] = "Booking";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<link rel="stylesheet" type="text/css" href="~/css/booking.module.css" />
+<div class="ss">
     <!-- Your HTML content for the Booking view goes here -->
     @if (Model != null && (Model.StartDate != null || Model.EndDate != null || Model.Pax != null))
     {
-        <h1>Booking Details</h1>
-        <p>Start Date: @Model.StartDate</p>
-        <p>End Date: @Model.EndDate</p>
-        <p>Pax: @Model.Pax</p>
+
+
+        <div class="section">
+            <h1>Booking Details</h1>
+
+
+            <p>Start Date: @Model.StartDate</p>
+            <p>End Date: @Model.EndDate</p>
+
+            <p>Pax: @Model.Pax</p>
+        </div>
         <!-- Add more details as needed -->
 
-        <form id="updateForm" action="@Url.Action("UpdateBooking", "Booking")" method="post">
-            <!-- New fields for personal information -->
+    }
+    else
+    {
+        <p>No booking details available.</p>
+    }
 
-            <h2>Personal Information</h2>
+
+
+</div>
+
+<div class="form">
+    <form id="updateForm" action="@Url.Action("UpdateBooking", "Booking")" method="post">
+        <!-- New fields for personal information -->
+
+        <h2>Personal Information</h2>
+        <div class="fullname">
             <div class="firstName">
                 <label>First Name</label>
                 <input type="text" id="enterFirstName" name="FirstName" />
@@ -23,24 +46,30 @@
                 <label>Last Name</label>
                 <input type="text" id="enterLastName" name="LastName" />
             </div>
-            <div class="email">
-                <label>Email</label>
-                <input type="email" id="enterEmail" name="Email" />
-            </div>
-            <div class="citizenship">
-                <label>Citizenship</label>
-                <input type="text" id="enterCitizenship" name="Citizenship" />
-            </div>
-            <div class="phoneNumber">
-                <label>Phone Number</label>
-                <input type="tel" id="enterPhoneNumber" name="PhoneNumber" />
-            </div>
-            @Html.AntiForgeryToken()
-            <button type="submit">Update Booking</button>
-        </form>
-    }
-    else
-    {
-        <p>No booking details available.</p>
-    }
+        </div>
+        <div class="email">
+            <label>Email</label>
+            <input type="email" id="enterEmail" name="Email" />
+        </div>
+        <div class="citizenship">
+            <label>Citizenship</label>
+            <input type="text" id="enterCitizenship" name="Citizenship" />
+        </div>
+        <div class="phoneNumber">
+            <label>Phone Number</label>
+            <input type="tel" id="enterPhoneNumber" name="PhoneNumber" />
+        </div>
+        <div class="phoneNumber">
+            <label>Room Type</label>
+            <select>
+                <option>Standard Room</option>
+                <option>Deluxe Room</option>
+                <option>Supreme Room</option>
+                <option>Suite Room</option>
+                <option>Family Room</option>
+            </select>
+        </div>
+        @Html.AntiForgeryToken()
+        <button type="submit">Update Booking</button>
+    </form>
 </div>

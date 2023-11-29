@@ -6,16 +6,12 @@
 
    .title {
       font-family: "Poppins";
-
       font-weight: 500;
    }
    .bookingRoom {
       width: 100%;
-      .bookingTitle {
-         font-weight: 16px;
-         font-family: "Poppins";
-         font-weight: 500;
-      }
+      display: grid;
+      grid-template-columns: repeat(auto-fit, 500);
       .cardGroup {
          display: flex;
          gap: 10px;

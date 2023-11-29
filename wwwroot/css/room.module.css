@@ -36,6 +36,7 @@ header .navbar .controller {
   justify-content: flex-end;
   gap: 20px;
   padding: 0 20px;
+  /* Additional styling for login and register pages */
 }
 header .navbar .controller a {
   background-color: transparent;
@@ -46,6 +47,13 @@ header .navbar .controller a {
   font-family: "Oxygen";
   color: #fff;
   z-index: 999;
+}
+header .navbar .controller a#swiftHotelLink {
+  color: #fff; /* Default color for other pages */
+}
+header .navbar .controller body.login a#loginLink,
+header .navbar .controller body.register a#loginLink {
+  color: #000; /* Change color for login and register pages */
 }
 
 .main {
@@ -390,6 +398,10 @@ header .navbar .controller a {
   font-size: 16px;
   font-family: "Oxygen";
 }
+.roomType .roomContainer .box a {
+  text-decoration: none; /* Remove underline */
+  color: black; /* Set the color to black or your preferred color */
+}
 
 .faqss {
   width: 100%;
@@ -456,4 +468,4 @@ header .navbar .controller a {
 .faqss .faqsFlexContainer .faqsCard p {
   width: auto;
   font-size: 1.2rem;
-}/*# sourceMappingURL=homepage.module.css.map */
+}/*# sourceMappingURL=room.module.css.map */
