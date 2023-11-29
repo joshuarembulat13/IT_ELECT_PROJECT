@@ -1,0 +1,27 @@
+﻿@model Booking
+
+<link rel="stylesheet" type="text/css" href="~/css/room.module.css" />
+    <div class="focusContainer">
+        <!-- Your HTML content for the Booking view goes here -->
+        @if (Model != null)
+        {
+            <h1>Booking Details</h1>
+            <p>Start Date: @Model.StartDate</p>
+            <p>End Date: @Model.EndDate</p>
+            <p>Pax: @Model.Pax</p>
+
+
+        <h2>Personal Information</h2>
+
+        <p>First Name: @Model.FirstName</p>
+        <p>Last Name: @Model.LastName</p>
+        <p>Email: @Model.Email</p>
+        <p>Phone Number: @Model.PhoneNumber</p>
+        <p>Citizenship: @Model.Citizenship</p>
+
+        }
+        else
+        {
+            <p>No booking details available.</p>
+        }
+    </div>

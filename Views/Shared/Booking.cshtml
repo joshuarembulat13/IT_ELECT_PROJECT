@@ -1,20 +1,46 @@
 ﻿@model Booking
 
 <link rel="stylesheet" type="text/css" href="~/css/room.module.css" />
-<div class="main">
-    <div class="focusContainer">
-        <!-- Your HTML content for the Booking view goes here -->
-        @if (Model != null)
-        {
-            <h1>Booking Details</h1>
-            <p>Start Date: @Model.StartDate</p>
-            <p>End Date: @Model.EndDate</p>
-            <p>Pax: @Model.Pax</p>
-            <!-- Add more details as needed -->
-        }
-        else
-        {
-            <p>No booking details available.</p>
-        }
-    </div>
+<div class="focusContainer">
+    <!-- Your HTML content for the Booking view goes here -->
+    @if (Model != null && (Model.StartDate != null || Model.EndDate != null || Model.Pax != null))
+    {
+        <h1>Booking Details</h1>
+        <p>Start Date: @Model.StartDate</p>
+        <p>End Date: @Model.EndDate</p>
+        <p>Pax: @Model.Pax</p>
+        <!-- Add more details as needed -->
+
+        <form id="updateForm" action="@Url.Action("UpdateBooking", "Booking")" method="post">
+            <!-- New fields for personal information -->
+
+            <h2>Personal Information</h2>
+            <div class="firstName">
+                <label>First Name</label>
+                <input type="text" id="enterFirstName" name="FirstName" />
+            </div>
+            <div class="lastName">
+                <label>Last Name</label>
+                <input type="text" id="enterLastName" name="LastName" />
+            </div>
+            <div class="email">
+                <label>Email</label>
+                <input type="email" id="enterEmail" name="Email" />
+            </div>
+            <div class="citizenship">
+                <label>Citizenship</label>
+                <input type="text" id="enterCitizenship" name="Citizenship" />
+            </div>
+            <div class="phoneNumber">
+                <label>Phone Number</label>
+                <input type="tel" id="enterPhoneNumber" name="PhoneNumber" />
+            </div>
+            @Html.AntiForgeryToken()
+            <button type="submit">Update Booking</button>
+        </form>
+    }
+    else
+    {
+        <p>No booking details available.</p>
+    }
 </div>

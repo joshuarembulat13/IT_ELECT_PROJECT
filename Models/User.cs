@@ -32,7 +32,6 @@ public class User : IdentityUser
 
 
 
-
     public Role Role { get; set; }
 
     // Computed property for NormalizedUserName

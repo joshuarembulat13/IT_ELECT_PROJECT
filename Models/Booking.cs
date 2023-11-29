@@ -29,4 +29,17 @@ public class Booking
     public int BookOrder { get; set; }
 
     public Status BookingStatus { get; set; }
+
+
+    // Other properties specific to your Booking model
+
+    public string? FirstName { get; set; }
+
+    public string? LastName { get; set; }
+    public string? Email { get; set; }
+
+    public string? Citizenship { get; set; }
+
+    public string? PhoneNumber { get; set; }
+    public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
 }
