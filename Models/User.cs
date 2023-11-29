@@ -1,7 +1,6 @@
 ﻿using System;
 
 using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Mvc;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -22,6 +21,14 @@ public class User : IdentityUser
     [Required(ErrorMessage = "Password is required")]
     [StringLength(6, ErrorMessage = "The Minimum length is {1} and the maximum is {2}")]
     public new string PasswordHash { get; set; }
+
+
+    [Required(ErrorMessage = "First Name is required")]
+    public string FirstName { get; set; }
+
+    [Required(ErrorMessage = "Last Name is required")]
+    public string LastName { get; set; }
+
 
 
 

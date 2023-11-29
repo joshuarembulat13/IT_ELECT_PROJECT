@@ -42,6 +42,17 @@
                     }
                     <form asp-action="Register" asp-controller="User" method="post">
 
+                        <!-- First Name input -->
+                        <div class="form-group mb-4">
+                            <label for="registerFirstName">First Name</label>
+                            <input type="text" id="registerFirstName" name="FirstName" class="form-control" required />
+                        </div>
+
+                        <!-- Last Name input -->
+                        <div class="form-group mb-4">
+                            <label for="registerLastName">Last Name</label>
+                            <input type="text" id="registerLastName" name="LastName" class="form-control" required />
+                        </div>
 
                         <!-- Email input for registration -->
                         <div class="form-group mb-4">
