@@ -1,4 +1,4 @@
-@model Booking;
+@model IEnumerable<Finals.Models.Bookings>;
 @{
     ViewData["Title"] = "Admin";
     Layout = "~/Views/Shared/_DashboardLayout.cshtml";
@@ -49,11 +49,11 @@
             </thead>
             <tbody>
                 @{
-                    @foreach (var elements in Booking)
+                    foreach (var elements in Model)
                     {
-                                          <tr>
-                                            <td>@elements.FirstName</td>
-                                          </tr>
+                        <tr>
+                            <td>@elements.FirstName</td>
+                        </tr>
                     };
                 }
             </tbody>

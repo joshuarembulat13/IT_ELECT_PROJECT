@@ -3,6 +3,7 @@ using Finals.data;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
+
 namespace Finals.Controllers;
 public class DashboardController : Controller
 {

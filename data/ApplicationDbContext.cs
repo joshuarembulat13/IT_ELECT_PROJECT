@@ -1,3 +1,4 @@
+using Finals.Models;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
@@ -12,7 +13,7 @@ namespace Finals.data
 
     public class ApplicationDbContext : IdentityDbContext<User>
     {
-        public DbSet<Booking> Bookings { get; set; }
+        public DbSet<Bookings> Bookings { get; set; }
         public DbSet<MyLog> Logs { get; set; }
 
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)

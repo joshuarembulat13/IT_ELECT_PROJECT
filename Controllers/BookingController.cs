@@ -1,6 +1,7 @@
 using Finals.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore; // Add this line
+using Finals.Models;
 
 namespace Finals.Controllers
 {
@@ -20,7 +21,7 @@ namespace Finals.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult SaveBooking(Booking booking)
+        public ActionResult SaveBooking(Bookings booking)
         {
             if (ModelState.IsValid)
             {
@@ -49,14 +50,14 @@ namespace Finals.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult UpdateBooking(Booking updatedBooking)
+        public ActionResult UpdateBooking(Bookings updatedBooking)
         {
             if (ModelState.IsValid)
             {
                 try
                 {
                     // Retrieve the most recent booking from the database
-                    Booking existingBooking = _bookingService.GetMostRecentBooking();
+                    Bookings existingBooking = _bookingService.GetMostRecentBooking();
 
                     if (existingBooking != null)
                     {

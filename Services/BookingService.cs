@@ -1,6 +1,7 @@
 using Finals.data;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
+using Finals.Models;
 
 namespace Finals.Services
 {
@@ -13,15 +14,15 @@ namespace Finals.Services
             _dbContext = dbContext;
         }
 
-        public void SaveBooking(Booking booking)
+        public void SaveBooking(Bookings book)
         {
-            _dbContext.Bookings.Add(booking);
+            _dbContext.Bookings.Add(book);
             _dbContext.SaveChanges();
         }
 
-        public void UpdateBooking(Booking updatedBooking)
+        public void UpdateBooking(Bookings updatedBooking)
         {
-            Booking existingBooking = _dbContext.Bookings.Find(updatedBooking.Id);
+            Bookings existingBooking = _dbContext.Bookings.Find(updatedBooking.Id);
 
             if (existingBooking != null)
             {
@@ -34,7 +35,7 @@ namespace Finals.Services
             }
         }
 
-        public Booking GetMostRecentBooking()
+        public Bookings GetMostRecentBooking()
         {
             // Order bookings by creation time (or ID) in descending order and select the first one
             return _dbContext.Bookings.OrderByDescending(b => b.CreatedAt).FirstOrDefault();
