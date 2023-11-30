@@ -1,3 +1,4 @@
+@model Booking;
 @{
     ViewData["Title"] = "Admin";
     Layout = "~/Views/Shared/_DashboardLayout.cshtml";
@@ -47,51 +48,14 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>Nathan Brooks</td>
-                    <td>Sept 10</td>
-                    <td>Sept 15</td>
-                    <td>Family</td>
-                    <td>4</td>
-                    <td>PHILIPPINES</td>
-                    <td>+63912345678</td>
-                </tr>
-                <tr>
-                    <td>Lily cooper</td>
-                    <td>Sept 11</td>
-                    <td>Sept 14</td>
-                    <td>Family</td>
-                    <td>4</td>
-                    <td>AUSTRALIA</td>
-                    <td>+63912345678</td>
-                </tr>
-                <tr>
-                    <td>Chloe Morgan</td>
-                    <td>Sept 20</td>
-                    <td>Sept 25</td>
-                    <td>Family</td>
-                    <td>4</td>
-                    <td>AUSTRALIA</td>
-                    <td>+63912345678</td>
-                </tr>
-                <tr>
-                    <td>Samuel Hayes</td>
-                    <td>Oct 10</td>
-                    <td>Oct 15</td>
-                    <td>Family</td>
-                    <td>4</td>
-                    <td>NEW JERSEY</td>
-                    <td>+63912345678</td>
-                </tr>
-                <tr>
-                    <td>Grace Turner</td>
-                    <td>Oct 15</td>
-                    <td>Oct 31</td>
-                    <td>Standard</td>
-                    <td>2</td>
-                    <td>South Korea</td>
-                    <td>+63912345678</td>
-                </tr>
+                @{
+                    @foreach (var elements in Booking)
+                    {
+                                          <tr>
+                                            <td>@elements.FirstName</td>
+                                          </tr>
+                    };
+                }
             </tbody>
         </table>
     </div>

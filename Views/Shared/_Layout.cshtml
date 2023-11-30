@@ -1,4 +1,4 @@
-﻿<!-- _Layout.cshtml -->
+<!-- _Layout.cshtml -->
 
 <!DOCTYPE html>
 <html lang="en">
@@ -26,11 +26,11 @@
                 <!-- Display username when logged in -->
                 @if (User.Identity.IsAuthenticated)
                 {
-                    <a id="loginLink" href="@Url.Action("Login", "User")">@User.Identity.Name</a>
+                            <a id="loginLink" href="@Url.Action("Login", "User")">@User.Identity.Name</a>
                 }
                 else
                 {
-                    <a id="loginLink" href="@Url.Action("Login", "User")">Login</a>
+                            <a id="loginLink" href="@Url.Action("Login", "User")">Login</a>
                 }
             </div>
         </div>

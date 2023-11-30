@@ -1,4 +1,3 @@
-﻿using System;
 using System.ComponentModel.DataAnnotations;
 
 public enum Status
@@ -28,7 +27,7 @@ public class Booking
 
     public int BookOrder { get; set; }
 
-    public Status BookingStatus { get; set; }
+    public Status BookingStatus { get; set; } = Status.Pending;
 
 
     // Other properties specific to your Booking model

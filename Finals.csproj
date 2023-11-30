@@ -4,7 +4,7 @@
     <TargetFramework>net7.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
-	  <OutputPath>bin\Debug\net7.0\</OutputPath>
+    <OutputPath>bin\Debug\net7.0\</OutputPath>
   </PropertyGroup>
 
   <ItemGroup>

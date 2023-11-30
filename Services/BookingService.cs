@@ -1,4 +1,4 @@
-﻿using Finals.data;
+using Finals.data;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
 

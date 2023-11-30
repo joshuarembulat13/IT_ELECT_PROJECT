@@ -1,4 +1,4 @@
-﻿using Finals.data;
+using Finals.data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
