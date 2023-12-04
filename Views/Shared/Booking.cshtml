@@ -1,4 +1,6 @@
-@model Bookings;
+@using Finals.Services;
+@model (BookingID? unverifiedBooking, Bookings? newBooking);
+@inject BookingService _bookingService;
 
 @{
     ViewData["Title"] = "Booking";
@@ -7,27 +9,26 @@
 <link rel="stylesheet" type="text/css" href="~/css/booking.module.css" />
 <div class="ss">
     <!-- Your HTML content for the Booking view goes here -->
-    @if (Model != null && (Model.StartDate != null || Model.EndDate != null || Model.Pax != null))
-    {
+@{
+    UnverifiedBooking unverifiedBooking = null;
 
+        if (@Model.unverifiedBooking != null) {
+            unverifiedBooking = _bookingService.GetUnverifiedBooking(@Model.unverifiedBooking.Id);
 
-        <div class="section">
-            <h1>Booking Details</h1>
-
-
-            <p>Start Date: @Model.StartDate</p>
-            <p>End Date: @Model.EndDate</p>
-
-            <p>Pax: @Model.Pax</p>
-        </div>
-        <!-- Add more details as needed -->
-
-    }
-    else
-    {
-        <p>No booking details available.</p>
-    }
-
+            if (unverifiedBooking != null) {
+                 <div class="section">
+                    <h1>Booking Details</h1>
+                    <p>Start Date: @unverifiedBooking.StartDate</p>
+                    <p>End Date: @unverifiedBooking.EndDate</p>
+                    <p>Pax: @unverifiedBooking.Pax</p>
+                 </div>
+            } else {
+                <p>No booking details available.</p>
+            }
+        } else {
+                <p>No booking details available.</p>
+        }
+}
 
 
 </div>
@@ -40,35 +41,50 @@
         <div class="fullname">
             <div class="firstName">
                 <label>First Name</label>
-                <input type="text" id="enterFirstName" name="FirstName" />
+                <input asp-for=newBooking.FirstName type="text" id="enterFirstName" name="FirstName" />
             </div>
             <div class="lastName">
                 <label>Last Name</label>
-                <input type="text" id="enterLastName" name="LastName" />
+                <input asp-for=newBooking.LastName type="text" id="enterLastName" name="LastName" />
             </div>
         </div>
         <div class="email">
             <label>Email</label>
-            <input type="email" id="enterEmail" name="Email" />
+            <input asp-for=newBooking.Email type="email" id="enterEmail" name="Email" />
         </div>
         <div class="citizenship">
             <label>Citizenship</label>
-            <input type="text" id="enterCitizenship" name="Citizenship" />
+            <input type="text" id="enterCitizenship" name="Citizenship" asp-for=newBooking.Citizenship />
         </div>
         <div class="phoneNumber">
             <label>Phone Number</label>
-            <input type="tel" id="enterPhoneNumber" name="PhoneNumber" />
+            <input type="tel" id="enterPhoneNumber" name="PhoneNumber" asp-for=newBooking.PhoneNumber/>
         </div>
-        <div class="phoneNumber">
+        <div class="roomType">
             <label>Room Type</label>
-            <select>
-                <option>Standard Room</option>
-                <option>Deluxe Room</option>
-                <option>Supreme Room</option>
-                <option>Suite Room</option>
-                <option>Family Room</option>
-            </select>
+            <select asp-items="@Html.GetEnumSelectList(typeof(RoomType))" class="form-control" id="RoomType" asp-for=newBooking.RoomType name="RoomType"> </select>
         </div>
+
+        @{
+            if (@Model.unverifiedBooking == null || unverifiedBooking == null) {
+                <label>Start Booking Date</label>
+                <input asp-for=newBooking.StartDate type="date" id="StartDate" name="StartDate" />
+
+                <label>End Booking Date</label>
+                <input asp-for=newBooking.EndDate type="date" id="EndDate" name="EndDate" />
+
+                <label>Pax</label>
+                <input asp-for=newBooking.Pax type="number" id="Pax" name="Pax" />
+           
+            } else {
+                <input type="hidden" value="@unverifiedBooking.StartDate" id="StartDate" name="StartDate"/>
+                <input type="hidden" value="@unverifiedBooking.EndDate" id="EndDate" name="EndDate"/>
+                <input type="hidden" value="@unverifiedBooking.Pax" id="Pax" name="Pax"/>
+            }
+        }
+
+
+        
         @Html.AntiForgeryToken()
         <button type="submit">Update Booking</button>
     </form>

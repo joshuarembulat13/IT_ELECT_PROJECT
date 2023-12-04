@@ -19,7 +19,7 @@ public class User : IdentityUser
     public string DisplayName { get; set; }
 
     [Required(ErrorMessage = "Password is required")]
-    [StringLength(6, ErrorMessage = "The Minimum length is {1} and the maximum is {2}")]
+    [StringLength(15, ErrorMessage = "The Minimum length is {1} and the maximum is {2}")]
     public new string PasswordHash { get; set; }
 
 

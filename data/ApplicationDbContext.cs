@@ -16,6 +16,8 @@ namespace Finals.data
         public DbSet<Bookings> Bookings { get; set; }
         public DbSet<MyLog> Logs { get; set; }
 
+        public DbSet<UnverifiedBooking> UnverifiedBookings { get; set; }
+
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
         {

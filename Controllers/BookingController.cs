@@ -21,9 +21,43 @@ namespace Finals.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
+
+        public ActionResult SaveUnverifiedBooking(UnverifiedBooking unverifiedBooking) {
+            if (!ModelState.IsValid)
+            {
+                try
+                {
+                    // Save the booking to the database
+                    _bookingService.SaveBooking(unverifiedBooking);
+
+                    BookingID booking = new BookingID();
+                    booking.Id = unverifiedBooking.Id;
+
+                    // Pass the saved booking as the model when redirecting to the 'Booking' view
+                    return View("Booking", CreateBookingTuple(booking, null));
+                }
+                catch (DbUpdateException ex)
+                {
+                    // Handle exceptions
+                    ModelState.AddModelError(string.Empty, "An error occurred while saving the booking.");
+                }
+                catch (Exception ex)
+                {
+                    // Handle other exceptions
+                    ModelState.AddModelError(string.Empty, "An unexpected error occurred.");
+                }
+            }
+
+
+            // If ModelState is not valid or an exception occurred, return to the form with validation or error messages
+            return View("Booking", CreateBookingTuple(null, null));
+        }
+        
+        [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult SaveBooking(Bookings booking)
         {
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
                 try
                 {
@@ -31,7 +65,7 @@ namespace Finals.Controllers
                     _bookingService.SaveBooking(booking);
 
                     // Pass the saved booking as the model when redirecting to the 'Booking' view
-                    return View("Booking", booking);
+                    return View("Booking", CreateBookingTuple(null, booking));
                 }
                 catch (DbUpdateException ex)
                 {
@@ -44,40 +78,23 @@ namespace Finals.Controllers
                     ModelState.AddModelError(string.Empty, "An unexpected error occurred.");
                 }
             }
+            
 
             // If ModelState is not valid or an exception occurred, return to the form with validation or error messages
-            return View("Booking", booking);
+            return View("Booking", CreateBookingTuple(null, booking));
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult UpdateBooking(Bookings updatedBooking)
-        {
-            if (ModelState.IsValid)
+        public ActionResult UpdateBooking(Bookings updatedBooking) {
+            if (!ModelState.IsValid)
             {
                 try
                 {
-                    // Retrieve the most recent booking from the database
-                    Bookings existingBooking = _bookingService.GetMostRecentBooking();
+                    // Save the booking to the database
+                    _bookingService.SaveBooking(updatedBooking);
 
-                    if (existingBooking != null)
-                    {
-                        // Update the existing booking with the new values
-                        existingBooking.FirstName = updatedBooking.FirstName;
-                        existingBooking.LastName = updatedBooking.LastName;
-                        existingBooking.Email = updatedBooking.Email;
-                        existingBooking.Citizenship = updatedBooking.Citizenship; // Ensure this line is present
-                        existingBooking.PhoneNumber = updatedBooking.PhoneNumber;
-
-                        // Save the updated booking to the database
-                        _bookingService.UpdateBooking(existingBooking);
-
-                        // Pass the updated booking to a different view for display
-                        return View("UpdatedBookingInfo", existingBooking);
-                    }
-                    else
-                    {
-                        ModelState.AddModelError(string.Empty, "No existing booking found.");
-                    }
+                    // Pass the booking to a different view for display
+                    return View("UpdatedBookingInfo", updatedBooking);
                 }
                 catch (DbUpdateException ex)
                 {
@@ -91,9 +108,11 @@ namespace Finals.Controllers
                 }
             }
 
-            // If ModelState is not valid or an exception occurred, return to the form with validation or error messages
-            return View("Booking", updatedBooking);
-        }
 
+            // If ModelState is not valid or an exception occurred, return to the form with validation or error messages
+            return View("Booking", CreateBookingTuple(null, updatedBooking));
+        }
+        
+        public (BookingID?, Bookings?) CreateBookingTuple(BookingID? bookingID, Bookings? booking) => (bookingID, booking);
     }
 }

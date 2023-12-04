@@ -2,6 +2,7 @@ using Finals.data;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
 using Finals.Models;
+using Microsoft.AspNetCore.Mvc;
 
 namespace Finals.Services
 {
@@ -14,9 +15,14 @@ namespace Finals.Services
             _dbContext = dbContext;
         }
 
-        public void SaveBooking(Bookings book)
+        public void SaveBooking(UnverifiedBooking unverifiedBooking)
         {
-            _dbContext.Bookings.Add(book);
+            _dbContext.UnverifiedBookings.Add(unverifiedBooking);
+            _dbContext.SaveChanges();
+        }
+        public void SaveBooking(Bookings booking)
+        {
+            _dbContext.Bookings.Add(booking);
             _dbContext.SaveChanges();
         }
 
@@ -39,6 +45,14 @@ namespace Finals.Services
         {
             // Order bookings by creation time (or ID) in descending order and select the first one
             return _dbContext.Bookings.OrderByDescending(b => b.CreatedAt).FirstOrDefault();
+        }
+
+        public List<Bookings> GetBookings(int limit) { 
+            return _dbContext.Bookings.OrderByDescending(b => b.CreatedAt).Take(limit).ToList();
+        }
+        
+        public UnverifiedBooking GetUnverifiedBooking(int ID) {
+            return _dbContext.UnverifiedBookings.Find(ID);
         }
     }
 }

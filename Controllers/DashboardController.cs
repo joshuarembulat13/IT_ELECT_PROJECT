@@ -18,7 +18,9 @@ public class DashboardController : Controller
 
     public IActionResult Admin()
     {
-        return View("Admin", mssql.Bookings);
+        ViewBag.BookingList = mssql.Bookings.ToList();
+
+        return View("Admin");
     }
 
     public IActionResult Booking()
@@ -30,6 +32,7 @@ public class DashboardController : Controller
         return View();
     }
     public IActionResult Archive() {
-        return View();
+  
+        return View("Archive", ViewBag.BookingList);
     }
 }

@@ -9,6 +9,17 @@ public enum Status
 }
 
 
+public enum RoomType
+{
+
+    Standard,
+    Deluxe,
+    Supreme,
+    Suite,
+    Family
+
+}
+
 
 namespace Finals.Models
 {
@@ -28,8 +39,8 @@ namespace Finals.Models
 
         public int UserId { get; set; }
 
-        public int RoomTypeId { get; set; }
-
+        public RoomType RoomType { get; set; }
+        
         public int BookOrder { get; set; }
 
         public Status BookingStatus { get; set; } = Status.Pending;
