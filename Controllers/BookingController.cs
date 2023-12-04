@@ -22,7 +22,8 @@ namespace Finals.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
 
-        public ActionResult SaveUnverifiedBooking(UnverifiedBooking unverifiedBooking) {
+        public ActionResult SaveUnverifiedBooking(UnverifiedBooking unverifiedBooking)
+        {
             if (!ModelState.IsValid)
             {
                 try
@@ -52,7 +53,7 @@ namespace Finals.Controllers
             // If ModelState is not valid or an exception occurred, return to the form with validation or error messages
             return View("Booking", CreateBookingTuple(null, null));
         }
-        
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult SaveBooking(Bookings booking)
@@ -78,14 +79,15 @@ namespace Finals.Controllers
                     ModelState.AddModelError(string.Empty, "An unexpected error occurred.");
                 }
             }
-            
+
 
             // If ModelState is not valid or an exception occurred, return to the form with validation or error messages
             return View("Booking", CreateBookingTuple(null, booking));
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult UpdateBooking(Bookings updatedBooking) {
+        public ActionResult UpdateBooking(Bookings updatedBooking)
+        {
             if (!ModelState.IsValid)
             {
                 try
@@ -112,7 +114,7 @@ namespace Finals.Controllers
             // If ModelState is not valid or an exception occurred, return to the form with validation or error messages
             return View("Booking", CreateBookingTuple(null, updatedBooking));
         }
-        
+
         public (BookingID?, Bookings?) CreateBookingTuple(BookingID? bookingID, Bookings? booking) => (bookingID, booking);
     }
 }

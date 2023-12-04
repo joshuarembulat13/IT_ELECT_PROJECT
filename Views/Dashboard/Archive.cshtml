@@ -1,4 +1,4 @@
-@Model Bookings
+@* @Model Bookings *@
 @using Finals.Services;
 @inject BookingService _bookingService;
 
@@ -8,7 +8,7 @@
 
     List<Bookings> archives = _bookingService.GetBookings(100);
 }
-
+<div class="archiveContainer">
 <table>
     <thead>
             <tr>
@@ -22,19 +22,21 @@
                     Action
                 </th>
             </tr>
-        }
     </thead>
     <tbody>
-        @foreach (var booking in archives)
-        {
-        <tr>
-        <td> @booking.Id </td>
-        <td> @booking.FirstName @booking.LastName </td>
-        <td> @booking.Email </td>
-        <td> @booking.StartDate </td>
-        <td> @booking.EndDate </td>
-        <td> @booking.RoomType </td>
-        </tr>
-        }
+      @{
+           @foreach (var booking in archives)
+            {
+            <tr>
+            <td> @booking.Id </td>
+            <td> @booking.FirstName @booking.LastName </td>
+            <td> @booking.Email </td>
+            <td> @booking.StartDate </td>
+            <td> @booking.EndDate </td>
+            <td> @booking.RoomType </td>
+            </tr>
+            }
+      }
     </tbody>
 </table>
+</div>

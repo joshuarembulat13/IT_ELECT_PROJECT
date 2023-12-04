@@ -1,0 +1,12 @@
+.archiveContainer {
+  width: 100%;
+}
+.archiveContainer table {
+  width: 100%;
+}
+.archiveContainer table tr th {
+  font-family: "Poppins";
+}
+.archiveContainer table tr td {
+  font-family: "Oxygen";
+}/*# sourceMappingURL=archive.module.css.map */
