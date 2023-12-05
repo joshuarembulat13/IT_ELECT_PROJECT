@@ -9,8 +9,8 @@
         <div class="section">
 
             <h1>Booking Details</h1>
-            <p>Start Date: @Model.StartDate</p>
-            <p>End Date: @Model.EndDate</p>
+            <p>Start Date: @Model.StartDate.ToString("MMMM dd, yyyy")</p>
+            <p>End Date: @Model.EndDate.ToString("MMMM dd, yyyy")</p>
             <p>Pax: @Model.Pax</p>
         </div>
     }

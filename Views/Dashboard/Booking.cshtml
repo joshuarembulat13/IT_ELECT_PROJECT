@@ -1,39 +1,51 @@
+@using Finals.Services;
+@inject BookingService _bookingService;
 @{
     ViewData["Title"] = "Booking";
     Layout = "~/Views/Shared/_DashboardLayout.cshtml";
+    List<Bookings> bookings = _bookingService.GetBookings(100);
 }
+
 <style>
     .dropbtn {
-        background-color: #4CAF50;
-        color: white;
-        padding: 16px;
-        font-size: 16px;
+        height: 25px;
+        width: 40px;
+        padding: 0 10px;
         border: none;
+        border-radius: 5px;
         cursor: pointer;
+        background-color: transparent;
     }
 
     .dropdown {
         position: relative;
-        display: inline-block;
+        display: flex;
+        justify-content: flex-end;
     }
 
     .dropdown-content {
+        width: 100%;
         display: none;
         position: absolute;
         background-color: #f9f9f9;
         min-width: 160px;
+        top: 27px;
         box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
         z-index: 1;
     }
 
-    .dropdown-content a {
+    .dropdown-content button {
+        width: 100%;
         color: black;
         padding: 12px 16px;
         text-decoration: none;
         display: block;
+        background-color: transparent;
+        border: none;
+        cursor: pointer;
     }
 
-    .dropdown-content a:hover {
+    .dropdown-content button:hover {
         background-color: #f1f1f1
     }
 
@@ -42,90 +54,73 @@
     }
 
     .dropdown:hover .dropbtn {
-        background-color: #3e8e41;
+        background-color: #ffd700;
+
+        svg {
+            stroke: #fff;
+        }
     }
 </style>
 
 <div class="bookingContainer">
     <h2 class="title">Booking</h2>
-    <div class="bookingRoom">
+    <div class="grpRoom">
         <div class="cardGroup">
-            <div class="card">
-                <div class="dropdown">
-                    <button class="dropbtn">Status</button>
-                    <div class="dropdown-content">
-                        <a>Accept</a>
-                        <a>Cancel</a>
+            @{
+                @foreach (var elements in bookings)
+                {
+                    <div class="card">
+                        <div class="dropdown">
+                            <button class="dropbtn">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-dots" width="24"
+                                    height="24" viewBox="0 0 24 24" stroke-width="2" stroke="#000000" fill="none"
+                                    stroke-linecap="round" stroke-linejoin="round">
+                                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                    <path d="M5 12m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" />
+                                    <path d="M12 12m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" />
+                                    <path d="M19 12m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" />
+                                </svg>
+                            </button>
+                            <div class="dropdown-content">
+                                <button>Accept</button>
+                                <button>Cancel</button>
+                            </div>
+                        </div>
+                        <div class="cardHeader">
+                            <h2>@elements.FirstName @elements.LastName</h2>
+                            <span about="@elements.BookingStatus">@elements.BookingStatus</span>
+                        </div>
+                        <div class="cardBody">
+                            <div class="cardDate">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar" width="24"
+                                    height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
+                                    stroke-linecap="round" stroke-linejoin="round">
+                                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                    <path d="M4 7a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2v-12z" />
+                                    <path d="M16 3v4" />
+                                    <path d="M8 3v4" />
+                                    <path d="M4 11h16" />
+                                    <path d="M11 15h1" />
+                                    <path d="M12 15v3" />
+                                </svg>
+                                <span>@elements.StartDate.ToString("MMM dd") - @elements.EndDate.ToString("MMM dd")</span>
+                            </div>
+                            <div class="cardPax">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-users" width="24"
+                                    height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
+                                    stroke-linecap="round" stroke-linejoin="round">
+                                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                    <path d="M9 7m-4 0a4 4 0 1 0 8 0a4 4 0 1 0 -8 0" />
+                                    <path d="M3 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+                                    <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+                                    <path d="M21 21v-2a4 4 0 0 0 -3 -3.85" />
+                                </svg>
+                                <span>@elements.Pax</span>
+                            </div>
+                        </div>
                     </div>
-                </div>
-                <div class="cardHeader">
-                    <h2>Sophia Anderson</h2>
-                    <span about="Paid">Paid</span>
-
-                </div>
-                <div class="cardBody">
-                    <div class="cardDate">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar" width="24"
-                            height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
-                            stroke-linecap="round" stroke-linejoin="round">
-                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                            <path d="M4 7a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2v-12z" />
-                            <path d="M16 3v4" />
-                            <path d="M8 3v4" />
-                            <path d="M4 11h16" />
-                            <path d="M11 15h1" />
-                            <path d="M12 15v3" />
-                        </svg>
-                        <span>Aug 28- Sep 2</span>
-                    </div>
-                    <div class="cardPax">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-users" width="24"
-                            height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
-                            stroke-linecap="round" stroke-linejoin="round">
-                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                            <path d="M9 7m-4 0a4 4 0 1 0 8 0a4 4 0 1 0 -8 0" />
-                            <path d="M3 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
-                            <path d="M16 3.13a4 4 0 0 1 0 7.75" />
-                            <path d="M21 21v-2a4 4 0 0 0 -3 -3.85" />
-                        </svg>
-                        <span>4</span>
-                    </div>
-                </div>
-            </div>
-            <div class="card">
-                <div class="cardHeader">
-                    <h2>Mia Johnson</h2>
-                    <span about="Paid">Paid</span>
-                </div>
-                <div class="cardBody">
-                    <div class="cardDate">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar" width="24"
-                            height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
-                            stroke-linecap="round" stroke-linejoin="round">
-                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                            <path d="M4 7a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2v-12z" />
-                            <path d="M16 3v4" />
-                            <path d="M8 3v4" />
-                            <path d="M4 11h16" />
-                            <path d="M11 15h1" />
-                            <path d="M12 15v3" />
-                        </svg>
-                        <span>Aug 28- Sep 2</span>
-                    </div>
-                    <div class="cardPax">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-users" width="24"
-                            height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
-                            stroke-linecap="round" stroke-linejoin="round">
-                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                            <path d="M9 7m-4 0a4 4 0 1 0 8 0a4 4 0 1 0 -8 0" />
-                            <path d="M3 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
-                            <path d="M16 3.13a4 4 0 0 1 0 7.75" />
-                            <path d="M21 21v-2a4 4 0 0 0 -3 -3.85" />
-                        </svg>
-                        <span>4</span>
-                    </div>
-                </div>
-            </div>
+                }
+            }
         </div>
     </div>
 </div>

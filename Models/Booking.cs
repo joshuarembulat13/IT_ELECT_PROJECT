@@ -29,9 +29,11 @@ namespace Finals.Models
         public int Id { get; set; }
 
         [Required(ErrorMessage = "Start Date is required")]
+        [DisplayFormat(DataFormatString = "{0:dd MMM yyyy}")]
         public DateTime StartDate { get; set; }
 
         [Required(ErrorMessage = "End date is required")]
+        [DisplayFormat(DataFormatString = "{0:dd MMM yyyy}")]
         public DateTime EndDate { get; set; }
 
         [Required(ErrorMessage = "Pax is required")]
@@ -40,7 +42,7 @@ namespace Finals.Models
         public int UserId { get; set; }
 
         public RoomType RoomType { get; set; }
-        
+
         public int BookOrder { get; set; }
 
         public Status BookingStatus { get; set; } = Status.Pending;

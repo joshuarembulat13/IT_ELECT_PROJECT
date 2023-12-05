@@ -1,7 +1,12 @@
 @model IEnumerable<Finals.Models.Bookings>;
+@using Finals.Services;
+@inject BookingService _bookingService;
 @{
     ViewData["Title"] = "Admin";
     Layout = "~/Views/Shared/_DashboardLayout.cshtml";
+
+    List<Bookings> bookings = _bookingService.GetBookings(100);
+
 }
 
 
@@ -12,23 +17,22 @@
             <div class="revenueContainer">
                 <div class="box">
                     <h2>Standard Room</h2>
-                    <span>Last 30 Days</span>
+                    <span>@bookings.Count(i => i.RoomType.HasFlag(RoomType.Deluxe))</span>
                 </div>
                 <div class="box">
                     <h2>Deluxe</h2>
-                    <span>Last 7 Days</span>
+                    <span>@bookings.Count(i => i.RoomType.HasFlag(RoomType.Deluxe))</span>
                 </div>
                 <div class="box">
                     <h2>Supreme</h2>
-                    <span>Last 30 Days</span>
+                    <span>@bookings.Count(i => i.RoomType.HasFlag(RoomType.Supreme))</span>
                 </div>
-                <div class="box">
-                    <h2>Suite</h2>
-                    <span>Last 30 Days</span>
+                <div class="box" <h2>Suite</h2>
+                    <span>@bookings.Count(i => i.RoomType.HasFlag(RoomType.Suite))</span>
                 </div>
                 <div class="box">
                     <h2>Family</h2>
-                    <span>Last 30 Days</span>
+                    <span>@bookings.Count(i => i.RoomType.HasFlag(RoomType.Family))</span>
                 </div>
             </div>
         </div>
@@ -48,16 +52,22 @@
                 </tr>
             </thead>
             <tbody>
-                @*@{
-                    foreach (var elements in Model)
+                @{
+                    @foreach (var elements in bookings)
                     {
                         <tr>
-                            <td>@elements.FirstName</td>
+                            <td>@elements.FirstName @elements.LastName</td>
+                            <td>@elements.StartDate.ToString("MMM dd")</td>
+                            <td>@elements.EndDate.ToString("MMM dd")</td>
+                            <td>@elements.RoomType</td>
+                            <td>@elements.Pax</td>
+                            <td>@elements.Citizenship</td>
+                            <td>@elements.PhoneNumber</td>
                         </tr>
                     };
                 }
-                *@
-                
+
+
             </tbody>
         </table>
     </div>

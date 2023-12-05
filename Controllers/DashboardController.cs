@@ -9,18 +9,19 @@ public class DashboardController : Controller
 {
     private readonly ILogger<DashboardController> _logger;
 
-    
+
     private readonly ApplicationDbContext mssql;
 
-    public DashboardController(ApplicationDbContext dummayData) {
-         mssql = dummayData;
+    public DashboardController(ApplicationDbContext dummayData)
+    {
+        mssql = dummayData;
     }
 
     public IActionResult Admin()
     {
         ViewBag.BookingList = mssql.Bookings.ToList();
 
-        return View("Admin");
+        return View("Admin", ViewBag.BookingList);
     }
 
     public IActionResult Booking()
@@ -31,8 +32,9 @@ public class DashboardController : Controller
     {
         return View();
     }
-    public IActionResult Archive() {
-  
+    public IActionResult Archive()
+    {
+
         return View("Archive", ViewBag.BookingList);
     }
 }

@@ -8,5 +8,7 @@
   font-family: "Poppins";
 }
 .archiveContainer table tr td {
+  height: 35px;
   font-family: "Oxygen";
+  text-align: center;
 }/*# sourceMappingURL=archive.module.css.map */

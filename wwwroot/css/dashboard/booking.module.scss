@@ -1,20 +1,24 @@
 .bookingContainer {
    width: 100%;
-   display: flex;
-   flex-direction: column;
+   height: 100vh;
+   overflow-y: auto;
    gap: 15px;
-
+   display: grid;
    .title {
       font-family: "Poppins";
       font-weight: 500;
    }
-   .bookingRoom {
+   .grpRoom {
       width: 100%;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, 500);
       .cardGroup {
-         display: flex;
-         gap: 10px;
+         width: 100%;
+         display: grid;
+         align-items: center;
+         justify-content: center;
+         gap: 20px;
+         padding: 10px;
+         grid-template-columns: repeat(auto-fit, 300px);
+
          .card {
             width: 300px;
             box-shadow: 0px 0px 3px 0px #ccc;
@@ -47,6 +51,7 @@
             .cardBody {
                display: flex;
                align-items: center;
+               justify-content: space-between;
                height: 30px;
                .cardDate {
                   width: 100%;
@@ -58,6 +63,7 @@
                   }
                   span {
                      font-family: "Oxygen";
+                     font-size: 15px;
                   }
                }
                .cardPax {

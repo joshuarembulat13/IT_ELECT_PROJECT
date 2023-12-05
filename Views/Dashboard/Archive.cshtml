@@ -9,8 +9,8 @@
     List<Bookings> archives = _bookingService.GetBookings(100);
 }
 <div class="archiveContainer">
-<table>
-    <thead>
+    <table>
+        <thead>
             <tr>
                 <th>Booking ID</th>
                 <th>Fullname</th>
@@ -22,21 +22,21 @@
                     Action
                 </th>
             </tr>
-    </thead>
-    <tbody>
-      @{
-           @foreach (var booking in archives)
-            {
-            <tr>
-            <td> @booking.Id </td>
-            <td> @booking.FirstName @booking.LastName </td>
-            <td> @booking.Email </td>
-            <td> @booking.StartDate </td>
-            <td> @booking.EndDate </td>
-            <td> @booking.RoomType </td>
-            </tr>
+        </thead>
+        <tbody>
+            @{
+                @foreach (var booking in archives)
+                {
+                    <tr>
+                        <td> @booking.Id </td>
+                        <td> @booking.FirstName @booking.LastName </td>
+                        <td> @booking.Email </td>
+                        <td> @booking.StartDate.ToString("MMM dd") </td>
+                        <td> @booking.EndDate.ToString("MMM dd") </td>
+                        <td> @booking.RoomType </td>
+                    </tr>
+                }
             }
-      }
-    </tbody>
-</table>
+        </tbody>
+    </table>
 </div>

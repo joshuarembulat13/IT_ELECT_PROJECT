@@ -1,80 +1,86 @@
 .bookingContainer {
   width: 100%;
-  display: flex;
-  flex-direction: column;
+  height: 100vh;
+  overflow-y: auto;
   gap: 15px;
+  display: grid;
 }
 .bookingContainer .title {
   font-family: "Poppins";
   font-weight: 500;
 }
-.bookingContainer .bookingRoom {
+.bookingContainer .grpRoom {
+  width: 100%;
+}
+.bookingContainer .grpRoom .cardGroup {
   width: 100%;
   display: grid;
-  grid-template-columns: repeat(auto-fit, 500);
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  padding: 10px;
+  grid-template-columns: repeat(auto-fit, 300px);
 }
-.bookingContainer .bookingRoom .cardGroup {
-  display: flex;
-  gap: 10px;
-}
-.bookingContainer .bookingRoom .cardGroup .card {
+.bookingContainer .grpRoom .cardGroup .card {
   width: 300px;
   box-shadow: 0px 0px 3px 0px #ccc;
   padding: 10px;
 }
-.bookingContainer .bookingRoom .cardGroup .card .cardHeader {
+.bookingContainer .grpRoom .cardGroup .card .cardHeader {
   width: 100%;
   display: flex;
   height: 60px;
   justify-content: space-between;
   align-items: center;
 }
-.bookingContainer .bookingRoom .cardGroup .card .cardHeader h2 {
+.bookingContainer .grpRoom .cardGroup .card .cardHeader h2 {
   font-size: 18px;
   font-family: "Poppins";
   font-weight: 500;
 }
-.bookingContainer .bookingRoom .cardGroup .card .cardHeader span {
+.bookingContainer .grpRoom .cardGroup .card .cardHeader span {
   font-family: "Oxygen";
   font-size: 16px;
 }
-.bookingContainer .bookingRoom .cardGroup .card .cardHeader span[about=Paid] {
+.bookingContainer .grpRoom .cardGroup .card .cardHeader span[about=Paid] {
   color: #32cd32;
 }
-.bookingContainer .bookingRoom .cardGroup .card .cardHeader span[about=Pending] {
+.bookingContainer .grpRoom .cardGroup .card .cardHeader span[about=Pending] {
   color: #ffa500;
 }
-.bookingContainer .bookingRoom .cardGroup .card .cardHeader span[about=Canceled] {
+.bookingContainer .grpRoom .cardGroup .card .cardHeader span[about=Canceled] {
   color: #dc143c;
 }
-.bookingContainer .bookingRoom .cardGroup .card .cardBody {
+.bookingContainer .grpRoom .cardGroup .card .cardBody {
   display: flex;
   align-items: center;
+  justify-content: space-between;
   height: 30px;
 }
-.bookingContainer .bookingRoom .cardGroup .card .cardBody .cardDate {
+.bookingContainer .grpRoom .cardGroup .card .cardBody .cardDate {
   width: 100%;
   display: flex;
   align-items: center;
   gap: 10px;
 }
-.bookingContainer .bookingRoom .cardGroup .card .cardBody .cardDate svg {
+.bookingContainer .grpRoom .cardGroup .card .cardBody .cardDate svg {
   stroke-width: 1.5px;
 }
-.bookingContainer .bookingRoom .cardGroup .card .cardBody .cardDate span {
+.bookingContainer .grpRoom .cardGroup .card .cardBody .cardDate span {
   font-family: "Oxygen";
+  font-size: 15px;
 }
-.bookingContainer .bookingRoom .cardGroup .card .cardBody .cardPax {
+.bookingContainer .grpRoom .cardGroup .card .cardBody .cardPax {
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: flex-end;
   gap: 10px;
 }
-.bookingContainer .bookingRoom .cardGroup .card .cardBody .cardPax span {
+.bookingContainer .grpRoom .cardGroup .card .cardBody .cardPax span {
   font-size: 16px;
   font-family: "Oxygen";
 }
-.bookingContainer .bookingRoom .cardGroup .card .cardBody .cardPax svg {
+.bookingContainer .grpRoom .cardGroup .card .cardBody .cardPax svg {
   stroke-width: 1.5px;
 }/*# sourceMappingURL=booking.module.css.map */

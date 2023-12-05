@@ -58,7 +58,7 @@ namespace Finals.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult SaveBooking(Bookings booking)
         {
-            if (!ModelState.IsValid)
+            if (ModelState.IsValid)
             {
                 try
                 {
@@ -88,7 +88,7 @@ namespace Finals.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult UpdateBooking(Bookings updatedBooking)
         {
-            if (!ModelState.IsValid)
+            if (ModelState.IsValid)
             {
                 try
                 {
