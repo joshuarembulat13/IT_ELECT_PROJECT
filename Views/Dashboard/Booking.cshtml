@@ -3,7 +3,7 @@
 @{
     ViewData["Title"] = "Booking";
     Layout = "~/Views/Shared/_DashboardLayout.cshtml";
-    List<Bookings> bookings = _bookingService.GetBookings(100);
+    List<Bookings> bookings = _bookingService.GetBookings(100, includeArchived: false);
 }
 
 <style>
@@ -61,7 +61,6 @@
         }
     }
 </style>
-
 <div class="bookingContainer">
     <h2 class="title">Booking</h2>
     <div class="grpRoom">
@@ -69,7 +68,7 @@
             @{
                 @foreach (var elements in bookings)
                 {
-                    <div class="card">
+                    <div class="card" data-booking-id="@elements.Id">
                         <div class="dropdown">
                             <button class="dropbtn">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-dots" width="24"

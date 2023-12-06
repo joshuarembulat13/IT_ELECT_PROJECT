@@ -40,7 +40,6 @@ namespace Finals.Services
                 _dbContext.SaveChanges();
             }
         }
-
         public Bookings GetMostRecentBooking()
         {
             // Order bookings by creation time (or ID) in descending order and select the first one
@@ -50,7 +49,17 @@ namespace Finals.Services
         public List<Bookings> GetBookings(int limit) { 
             return _dbContext.Bookings.OrderByDescending(b => b.CreatedAt).Take(limit).ToList();
         }
-        
+
+        public List<Bookings> GetBookings(int limit, bool includeArchived = false)
+        {
+            // Filter by ArchiveStatus if includeArchived is false
+            IQueryable<Bookings> query = includeArchived
+                ? _dbContext.Bookings
+                : _dbContext.Bookings.Where(b => !b.ArchiveStatus);
+
+            return query.OrderByDescending(b => b.CreatedAt).Take(limit).ToList();
+        }
+
         public UnverifiedBooking GetUnverifiedBooking(int ID) {
             return _dbContext.UnverifiedBookings.Find(ID);
         }

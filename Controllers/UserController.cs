@@ -114,8 +114,7 @@ namespace Finals.Controllers
                 // Log successful login
                 _logger.LogInformation($"User {user.DisplayName} authenticated: {User.Identity.IsAuthenticated}");
 
-                // Redirect to the index page after successful login
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("Admin", "Dashboard");
             }
             else
             {
@@ -123,10 +122,6 @@ namespace Finals.Controllers
                 return View();
             }
         }
-
-
-
-
 
         public async Task<IActionResult> Logout()
         {
@@ -136,7 +131,7 @@ namespace Finals.Controllers
             return RedirectToAction("Login");
         }
 
-
+       
 
         public IActionResult StandardRoom()
         {

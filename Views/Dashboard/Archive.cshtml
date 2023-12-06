@@ -6,7 +6,7 @@
     ViewData["Title"] = "Archive";
     Layout = "~/Views/Shared/_DashboardLayout.cshtml";
 
-    List<Bookings> archives = _bookingService.GetBookings(100);
+    List<Bookings> archives = _bookingService.GetBookings(100, includeArchived: true);
 }
 <div class="archiveContainer">
     <table>
@@ -25,7 +25,7 @@
         </thead>
         <tbody>
             @{
-                @foreach (var booking in archives)
+                @foreach (var booking in archives.Where(b => b.ArchiveStatus))
                 {
                     <tr>
                         <td> @booking.Id </td>

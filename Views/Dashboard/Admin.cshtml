@@ -5,7 +5,7 @@
     ViewData["Title"] = "Admin";
     Layout = "~/Views/Shared/_DashboardLayout.cshtml";
 
-    List<Bookings> bookings = _bookingService.GetBookings(100);
+    List<Bookings> bookings = _bookingService.GetBookings(100, includeArchived: false);
 
 }
 
@@ -17,7 +17,7 @@
             <div class="revenueContainer">
                 <div class="box">
                     <h2>Standard Room</h2>
-                    <span>@bookings.Count(i => i.RoomType.HasFlag(RoomType.Deluxe))</span>
+                    <span>@bookings.Count(i => i.RoomType.HasFlag(RoomType.Standard))</span>
                 </div>
                 <div class="box">
                     <h2>Deluxe</h2>
@@ -66,8 +66,6 @@
                         </tr>
                     };
                 }
-
-
             </tbody>
         </table>
     </div>

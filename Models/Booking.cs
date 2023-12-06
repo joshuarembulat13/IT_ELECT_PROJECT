@@ -47,6 +47,7 @@ namespace Finals.Models
 
         public Status BookingStatus { get; set; } = Status.Pending;
 
+        public Boolean ArchiveStatus { get; set; } = false;
 
         // Other properties specific to your Booking model
         [Required(ErrorMessage = "Firstname is required")]
