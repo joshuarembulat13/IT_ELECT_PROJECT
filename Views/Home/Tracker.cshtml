@@ -1,6 +1,10 @@
+@using Finals.Services;
+@inject BookingService _bookingService;
 @{
     ViewData["Title"] = "Hotel Reservation Tracker";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    List<Bookings> bookings = _bookingService.GetBookings(100, includeArchived: true);
+}
 }
 
 <style>
@@ -18,9 +22,9 @@
 </style>
 <div class="guestContainer">
     <h2 class="title">Hotel Reservation Status</h2>
-    <form>
-        <input type="search" placeholder="Enter your Booking ID" />
-        <button>
+    <form id="filterForm">
+        <input type="search" id="bookingIdInput" placeholder="Enter your Booking ID" />
+        <button type="button" onclick="filterBookings()">
             <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="20" height="20"
                 viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round"
                 stroke-linejoin="round">
@@ -30,44 +34,63 @@
             </svg>
         </button>
     </form>
-    <div class="trackerContainer">
-        <div class="header">
-            <h2>Booking ID: #123123</h2>
-            <span about="Pending">Pending</span>
-        </div>
-        <div class="contacts">
-            <h2>Samanth Beth</h2>
-            <span>Thailand</span>
-            <span>samanthabeth@gmail.com</span>
-        </div>
+     @{
+        @foreach (var elements in bookings)
+        {
+            <div class="trackerContainer" data-booking-id="@elements.Id" style="display: none;">
+                <div class="header">
+                    <h2>@elements.Id</h2>
+                    <h2>@elements.BookingStatus</h2>
+                </div>
+                <div class="contacts">
+                    <h2>@elements.FirstName @elements.LastName</h2>
+                    <h2>@elements.Email</h2>
+                </div>
 
-        <div class="room">
-            <div>
-                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar" width="24"
-                    height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
-                    stroke-linecap="round" stroke-linejoin="round">
-                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                    <path d="M4 7a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2v-12z" />
-                    <path d="M16 3v4" />
-                    <path d="M8 3v4" />
-                    <path d="M4 11h16" />
-                    <path d="M11 15h1" />
-                    <path d="M12 15v3" />
-                </svg>
-                <span>Aug 20 - Aug 30</span>
+                <div class="room">
+                    <div>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar" width="24"
+                        height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
+                        stroke-linecap="round" stroke-linejoin="round">
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                            <path d="M4 7a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2v-12z" />
+                            <path d="M16 3v4" />
+                            <path d="M8 3v4" />
+                            <path d="M4 11h16" />
+                            <path d="M11 15h1" />
+                            <path d="M12 15v3" />
+                        </svg>
+                        <span>@elements.StartDate.ToString("MMM dd") - @elements.EndDate.ToString("MMM dd")</span>
+                    </div>
+                    <div>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-bed" width="24" height="24"
+                        viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round"
+                        stroke-linejoin="round">
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                            <path d="M7 9m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" />
+                            <path d="M22 17v-3h-20" />
+                            <path d="M2 8v9" />
+                            <path d="M12 14h10v-2a3 3 0 0 0 -3 -3h-7v5z" />
+                        </svg>
+                        <span>@elements.Pax</span>
+                    </div>
+                </div>
             </div>
-            <div>
-                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-bed" width="24" height="24"
-                    viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round"
-                    stroke-linejoin="round">
-                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                    <path d="M7 9m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" />
-                    <path d="M22 17v-3h-20" />
-                    <path d="M2 8v9" />
-                    <path d="M12 14h10v-2a3 3 0 0 0 -3 -3h-7v5z" />
-                </svg>
-                <span>3 PAX | Standard Room</span>
-            </div>
+        }
+        }
         </div>
-    </div>
-</div>
+<script>
+    function filterBookings() {
+        var input = document.getElementById('bookingIdInput').value;
+        var containers = document.querySelectorAll('.trackerContainer');
+
+        containers.forEach(function (container) {
+            var bookingId = container.getAttribute('data-booking-id');
+            if (bookingId === input) {
+                container.style.display = 'block';
+            } else {
+                container.style.display = 'none';
+            }
+        });
+    }
+</script>
