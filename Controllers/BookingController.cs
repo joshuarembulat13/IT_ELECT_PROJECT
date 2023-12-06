@@ -24,7 +24,7 @@ namespace Finals.Controllers
 
         public ActionResult SaveUnverifiedBooking(UnverifiedBooking unverifiedBooking)
         {
-            if (!ModelState.IsValid)
+            if (ModelState.IsValid)
             {
                 try
                 {

@@ -17,22 +17,22 @@
             <div class="revenueContainer">
                 <div class="box">
                     <h2>Standard Room</h2>
-                    <span>@bookings.Count(i => i.RoomType.HasFlag(RoomType.Standard))</span>
+                    <span>@bookings.Count(i => i.RoomType.Equals(RoomType.Standard))</span>
                 </div>
                 <div class="box">
                     <h2>Deluxe</h2>
-                    <span>@bookings.Count(i => i.RoomType.HasFlag(RoomType.Deluxe))</span>
+                    <span>@bookings.Count(i => i.RoomType.Equals(RoomType.Deluxe))</span>
                 </div>
                 <div class="box">
                     <h2>Supreme</h2>
-                    <span>@bookings.Count(i => i.RoomType.HasFlag(RoomType.Supreme))</span>
+                    <span>@bookings.Count(i => i.RoomType.Equals(RoomType.Supreme))</span>
                 </div>
                 <div class="box" <h2>Suite</h2>
-                    <span>@bookings.Count(i => i.RoomType.HasFlag(RoomType.Suite))</span>
+                    <span>@bookings.Count(i => i.RoomType.Equals(RoomType.Suite))</span>
                 </div>
                 <div class="box">
                     <h2>Family</h2>
-                    <span>@bookings.Count(i => i.RoomType.HasFlag(RoomType.Family))</span>
+                    <span>@bookings.Count(i => i.RoomType.Equals(RoomType.Family))</span>
                 </div>
             </div>
         </div>
