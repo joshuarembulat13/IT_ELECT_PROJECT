@@ -22,10 +22,11 @@
 
 <div class="form">
     <form>
-        <h2>Personal Information</h2>
+        <h2 class="formTitle">Personal Information</h2>
         <p>Booking ID: @Model.Id</p>
-        <p>First Name: @Model.FirstName</p>
-        <p>Last Name: @Model.LastName</p>
+        <div class="fullname">
+            <p>Fullname: @Model.FirstName @Model.LastName</p>
+        </div>
         <p>Email: @Model.Email</p>
         <p>Phone Number: @Model.PhoneNumber</p>
         <p>Citizenship: @Model.Citizenship</p>

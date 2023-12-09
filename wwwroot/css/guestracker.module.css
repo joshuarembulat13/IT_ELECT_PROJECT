@@ -87,8 +87,7 @@
   width: 100%;
   height: 60px;
   display: flex;
-  flex-direction: column;
-  gap: 5px;
+  gap: 20px;
 }
 .guestContainer .trackerContainer .room div {
   display: flex;
