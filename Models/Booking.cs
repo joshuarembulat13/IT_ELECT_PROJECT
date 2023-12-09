@@ -3,9 +3,9 @@ using System.ComponentModel.DataAnnotations;
 
 public enum Status
 {
-    Pending,
-    Paid,
-    Cancelled
+    Pending = 0,
+    Paid = 1,
+    Cancelled = 2
 }
 
 
@@ -45,7 +45,7 @@ namespace Finals.Models
 
         public int BookOrder { get; set; }
 
-        public Status BookingStatus { get; set; } = Status.Pending;
+        public Status BookingStatus { get; set; }
 
         public Boolean ArchiveStatus { get; set; } = false;
 

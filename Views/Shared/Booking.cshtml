@@ -62,7 +62,7 @@
         </div>
         <div class="roomType">
             <label>Room Type</label>
-            <select asp-items="@Html.GetEnumSelectList(typeof(RoomType))" class="form-control" id="RoomType" asp-for=newBooking.RoomType name="RoomType"> </select>
+            <select asp-items="@Html.GetEnumSelectList(typeof(RoomType))" class="form-control" id="RoomType" asp-for=newBooking!.RoomType name="RoomType"> </select>
         </div>
 
         @{

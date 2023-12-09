@@ -47,6 +47,10 @@
                     @if (User.Identity.IsAuthenticated)
                     {
                         <p>Welcome, @User.Identity.Name!</p>
+
+                        <!-- Add the styled link as a button for redirecting to Admin.cshtml -->
+                        <a href="/Dashboard/Admin" class="btn btn-primary btn-block mb-4">Go to Dashboard</a>
+
                         <form asp-controller="User" asp-action="Logout" method="post">
                             <button type="submit" class="btn btn-danger btn-block mb-4">Logout</button>
                         </form>

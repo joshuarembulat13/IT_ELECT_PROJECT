@@ -81,8 +81,18 @@
                                 </svg>
                             </button>
                             <div class="dropdown-content">
-                                <button>Accept</button>
-                                <button>Cancel</button>
+                                <form method="post" asp-action="UpdateBookingStatus" asp-controller="Booking">
+                                    <input type="hidden" name="bookingId" value="@elements.Id" />
+                                    <button type="submit" name="status" value="1">Paid</button>
+                                </form>
+                                <form method="post" asp-action="UpdateBookingStatus" asp-controller="Booking">
+                                    <input type="hidden" name="bookingId" value="@elements.Id" />
+                                    <button type="submit" name="status" value="0">Pending</button>
+                                </form>
+                                <form method="post" asp-action="UpdateArchiveStatus" asp-controller="Booking">
+                                    <input type="hidden" name="bookingId" value="@elements.Id" />
+                                    <button type="submit" name="status" value="2">Archive</button>
+                                </form>
                             </div>
                         </div>
                         <div class="cardHeader">

@@ -63,5 +63,41 @@ namespace Finals.Services
         public UnverifiedBooking GetUnverifiedBooking(int ID) {
             return _dbContext.UnverifiedBookings.Find(ID);
         }
+
+
+        public Bookings GetBookingById(int id)
+        {
+            return _dbContext.Bookings.Find(id);
+        }
+
+
+        public bool DeleteBooking(int bookingId)
+        {
+            try
+            {
+                // Find the booking in the database
+                var bookingToDelete = _dbContext.Bookings.Find(bookingId);
+
+                // Check if the booking exists
+                if (bookingToDelete != null)
+                {
+                    // Remove the booking from the DbSet and save changes
+                    _dbContext.Bookings.Remove(bookingToDelete);
+                    _dbContext.SaveChanges();
+
+                    return true;
+                }
+
+                return false; // Booking not found
+            }
+            catch (Exception ex)
+            {
+                // Handle any exceptions that might occur during deletion
+                // Log the exception, display an error message, etc.
+                return false;
+            }
+        }
+
+
     }
 }
