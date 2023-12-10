@@ -45,9 +45,6 @@ header .navbar .controller a {
   color: #fff;
   z-index: 999;
 }
-header .navbar .controller a#swiftHotelLink {
-  color: #fff; /* Default color for other pages */
-}
 header .navbar .controller body.login a#loginLink,
 header .navbar .controller body.register a#loginLink {
   color: #000; /* Change color for login and register pages */
@@ -304,17 +301,17 @@ header .navbar .controller body.register a#loginLink {
   font-size: 17px;
   font-family: "Oxygen";
 }
-.about .aboutContainer .detachContainer button {
-  width: 100%;
-  height: 50px;
-  background-color: #ffd700;
-  border: none;
-  color: #000;
-  border-radius: 3px;
-  font-weight: 600;
-  font-size: 16px;
-  font-family: "Oxygen";
-}
+    .about .aboutContainer .detachContainer button {
+        width: 700px;
+        height: 65px;
+        background-color: #ffd700;
+        border: none;
+        color: #000;
+        border-radius: 3px;
+        font-weight: 600;
+        font-size: 16px;
+        font-family: "Oxygen";
+    }
 
 .roomType {
   width: 100%;
@@ -435,27 +432,27 @@ header .navbar .controller body.register a#loginLink {
   }
 }
 .faqss .faqsFlexContainer {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: centerw;
-  align-items: center;
-  gap: 10px;
-  padding: 0 20px;
+    width: 900px;
+    display: flex;
+    flex-direction: column;
+    justify-content: centerw;
+    align-items: center;
+    gap: 10px;
+    padding: 0 20px;
 }
-.faqss .faqsFlexContainer .faqsCard {
-  width: 500px;
-  height: auto;
-  display: flex;
-  flex-direction: column;
-  padding: 15px 20px;
-  gap: 5px;
-}
+    .faqss .faqsFlexContainer .faqsCard {
+        width: 900px;
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        padding: 15px 20px;
+        gap: 5px;
+    }
 @media screen and (max-width: 600px) {
-  .faqss .faqsFlexContainer .faqsCard {
-    width: 100%;
-    padding: 10px;
-  }
+    .faqss .faqsFlexContainer .faqsCard {
+        width: 900px;
+        padding: 10px;
+    }
   .faqss .faqsFlexContainer .faqsCard h2 {
     font-family: "Poppins";
     font-size: 16px;

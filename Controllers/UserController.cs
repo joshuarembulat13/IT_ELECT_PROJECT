@@ -61,11 +61,13 @@ namespace Finals.Controllers
                 return View();
             }
 
-            if (model == null || string.IsNullOrEmpty(model.PasswordHash))
+            if (model == null || string.IsNullOrEmpty(model.PasswordHash) || model.PasswordHash.Length < 8)
             {
-                ViewBag.ErrorMessage = "Password cannot be null or empty.";
+                TempData["ErrorMessageC"] = "Password must be at least 8 characters long.";
                 return View();
             }
+
+
 
             // Continue with the registration process
             var result = await _userManager.CreateAsync(new User

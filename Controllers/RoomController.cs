@@ -17,5 +17,20 @@ namespace Finals.Controllers
             // You can add any necessary logic here
             return View();
         }
+        public IActionResult DeluxeRoom()
+        {
+            // You can add any necessary logic here
+            return View();
+        }
+        public IActionResult SupremeRoom()
+        {
+            // You can add any necessary logic here
+            return View();
+        }
+        public IActionResult FamilyRoom()
+        {
+            // You can add any necessary logic here
+            return View();
+        }
     }
 }

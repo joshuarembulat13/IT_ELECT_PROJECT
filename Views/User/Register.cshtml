@@ -40,6 +40,22 @@
                             @emailErrorMessage
                         </div>
                     }
+
+
+                    <!-- Display error message for password length validation if it exists  -->
+                    @{
+                        var passwordErrorMessage = TempData["ErrorMessageC"] as string;
+                    }
+
+                    @if (!string.IsNullOrEmpty(passwordErrorMessage))
+                    {
+                        <div class="alert alert-danger">
+                            @passwordErrorMessage
+                        </div>
+                    }
+
+
+
                     <form asp-action="Register" asp-controller="User" method="post">
 
                         <!-- First Name input -->

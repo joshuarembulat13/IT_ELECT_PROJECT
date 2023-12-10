@@ -6,6 +6,20 @@
     ViewData["Title"] = "Booking";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+
+<head>
+<style>
+    .ss {
+        /* Your existing styles for .ss go here */
+        margin-bottom: 96px; /* Adjust the value as needed */
+    }
+
+    .form {
+        /* Your existing styles for .form go here */
+    }
+    </style>
+</head>
+
 <link rel="stylesheet" type="text/css" href="~/css/booking.module.css" />
 <div class="ss">
     <!-- Your HTML content for the Booking view goes here -->
@@ -18,9 +32,10 @@
             if (unverifiedBooking != null) {
                  <div class="section">
                     <h1>Booking Details</h1>
-                    <p>Start Date: @unverifiedBooking.StartDate</p>
-                    <p>End Date: @unverifiedBooking.EndDate</p>
+                    <p>Start Date: @unverifiedBooking.StartDate.ToString("MMMM dd, yyyy")</p>
+                    <p>End Date: @unverifiedBooking.EndDate.ToString("MMMM dd, yyyy")</p>
                     <p>Pax: @unverifiedBooking.Pax</p>
+
                  </div>
             } else {
                 <p>No booking details available.</p>
@@ -33,6 +48,8 @@
 
 </div>
 
+
+
 <div class="form">
     <form id="updateForm" action="@Url.Action("UpdateBooking", "Booking")" method="post">
         <!-- New fields for personal information -->
@@ -40,23 +57,92 @@
         <h2>Personal Information</h2>
         <div class="fullname">
             <div class="firstName">
+
+                <!-- Display error message for first name validation if it exists  -->
+                @{
+                    var firstNameErrorMessage = TempData["ErrorMessageF"] as string;
+                }
+
+                @if (!string.IsNullOrEmpty(firstNameErrorMessage))
+                {
+                    <div class="alert alert-danger">
+                        @firstNameErrorMessage
+                    </div>
+                }
+
                 <label>First Name</label>
-                <input asp-for=newBooking.FirstName type="text" id="enterFirstName" name="FirstName" />
+                <input asp-for="newBooking.FirstName" type="text" id="enterFirstName" name="FirstName" />
             </div>
+
             <div class="lastName">
+
+                <!-- Display error message for last name validation if it exists  -->
+                @{
+                    var lastNameErrorMessage = TempData["ErrorMessageG"] as string;
+                }
+
+                @if (!string.IsNullOrEmpty(lastNameErrorMessage))
+                {
+                    <div class="alert alert-danger">
+                        @lastNameErrorMessage
+                    </div>
+                }
+
                 <label>Last Name</label>
-                <input asp-for=newBooking.LastName type="text" id="enterLastName" name="LastName" />
+                <input asp-for="newBooking.LastName" type="text" id="enterLastName" name="LastName" />
             </div>
         </div>
+
+
         <div class="email">
+
+            <!-- Display error message for email validation if it exists -->
+            @{
+                var emailErrorMessage = TempData["ErrorMessageE"] as string;
+            }
+
+            @if (!string.IsNullOrEmpty(emailErrorMessage))
+            {
+                <div class="alert alert-danger">
+                    @emailErrorMessage
+                </div>
+            }
+
             <label>Email</label>
-            <input asp-for=newBooking.Email type="email" id="enterEmail" name="Email" />
+            <input asp-for="newBooking.Email" type="email" id="enterEmail" name="Email" />
         </div>
+
         <div class="citizenship">
+
+            <!-- Display error message for citizenship validation if it exists  -->
+            @{
+                var citizenshipErrorMessage = TempData["ErrorMessageH"] as string;
+            }
+
+            @if (!string.IsNullOrEmpty(citizenshipErrorMessage))
+            {
+                <div class="alert alert-danger">
+                    @citizenshipErrorMessage
+                </div>
+            }
             <label>Citizenship</label>
             <input type="text" id="enterCitizenship" name="Citizenship" asp-for=newBooking.Citizenship />
         </div>
         <div class="phoneNumber">
+
+            <!-- Display error message for phone number validation if it exists  -->
+            @{
+                var phoneNumberErrorMessage = TempData["ErrorMessageD"] as string;
+            }
+
+            @if (!string.IsNullOrEmpty(phoneNumberErrorMessage))
+            {
+                <div class="alert alert-danger">
+                    @phoneNumberErrorMessage
+                </div>
+            }
+
+
             <label>Phone Number</label>
             <input type="tel" id="enterPhoneNumber" name="PhoneNumber" asp-for=newBooking.PhoneNumber/>
         </div>
@@ -82,7 +168,6 @@
                 <input type="hidden" value="@unverifiedBooking.Pax" id="Pax" name="Pax"/>
             }
         }
-
 
         
         @Html.AntiForgeryToken()

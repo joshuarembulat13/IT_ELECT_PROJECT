@@ -1,6 +1,8 @@
+@page
+@model User
+
 @{
-    ViewData["Title"] = "Swift Hotel";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "FamilyRoom";
 }
 <style>
     /* Add this style block in your HTML or link to an external stylesheet */
@@ -11,20 +13,16 @@
     }
 </style>
 
+<link rel="stylesheet" type="text/css" href="~/css/room.module.css" />
 <div class="main">
     <div class="focusContainer">
         <div class="fc">
-            <h2>Where Comfort Meets Velocity, Your Journey to Exceptional Hospitality.</h2>
+            <h2>Family Room</h2>
             <p>
-                a luxurious retreat nestled in the heart of the city, offering a seamless blend of modern elegance and
-                timeless
-                charm. With its sophisticated decor, impeccable service, and state-of-the-art amenities, guests are
-                treated
-                to
-                an indulgent experience that reflects the epitome of comfort and style.
             </p>
         </div>
     </div>
+
     <div class="bookingContainer">
         <form id="bookingForm" action="@Url.Action("SaveUnverifiedBooking", "Booking")" method="post">
             <div class="startDate">
@@ -43,6 +41,7 @@
             <button type="submit">Book Now</button>
         </form>
     </div>
+
 </div>
 
 <div class="about">
@@ -50,22 +49,15 @@
     </div>
     <div class="aboutContainer">
         <div class="imageContainer">
-            <img src="@Url.Content("../images/bgabout.jpg")" height="700px" width="100%" />
+            <img src="@Url.Content("../images/room4.jpg")" height="700px" width="100%" />
         </div>
         <div>
             <div class="detachContainer">
-                <h2>Unwind in Style, Where Every Stay is a Symphony of Comfort and Convenience</h2>
+                <h2>Unforgettable Moments, Shared Comfort</h2>
                 <p>
-                    Discover a realm of convenience and sophistication with our range of exceptional amenities. Immerse
-                    yourself in the tranquility of our lush swimming pool area, a haven of relaxation where the world's
-                    worries fade away. Enjoy seamless connectivity with high-speed Wi-Fi throughout the property,
-                    keeping
-                    you in touch with the outside world even as you revel in the hotel's opulent surroundings. Swift
-                    Hotel's
-                    commitment to comfort is further exemplified by our complimentary parking, providing a stress-free
-                    experience from the moment you arrive. Whether you're seeking a serene escape or a productive
-                    sanctuary,
-                    Swift Hotel promises an unparalleled journey into luxury.
+                    Create lasting memories with your loved ones in our Family Room. Designed to accommodate the unique needs of families, 
+                    this room offers ample space, comfortable bedding, and family-friendly amenities. 
+                    Enjoy a home-away-from-home experience that ensures everyone in the family feels welcome and relaxed.
                 </p>
                 <form action="@Url.Action("SaveUnverifiedBooking", "Booking")" method="post">
                     <div class="apax">

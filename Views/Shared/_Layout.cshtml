@@ -20,8 +20,9 @@
                 <!-- Add the "Swift Hotel" link -->
                 <a id="swiftHotelLink" href="@Url.Action("Index", "Home")">Swift Hotel</a>
 
-
                 <a id="guestTrackerLink" href="@Url.Action("Tracker", "Home")">Guest Tracker</a>
+
+                @* <a id="FAQsLink" href="@Url.Action("FAQs", "Home")">FAQs</a> *@
 
                 <!-- Display username when logged in -->
                 @if (User.Identity.IsAuthenticated)

@@ -57,7 +57,10 @@ namespace Finals.Services
                 ? _dbContext.Bookings
                 : _dbContext.Bookings.Where(b => !b.ArchiveStatus);
 
-            return query.OrderByDescending(b => b.CreatedAt).Take(limit).ToList();
+            return query.OrderByDescending(b => b.CreatedAt.HasValue ? b.CreatedAt : DateTime.MinValue)
+            .Take(limit)
+            .ToList();
+
         }
 
         public UnverifiedBooking GetUnverifiedBooking(int ID) {

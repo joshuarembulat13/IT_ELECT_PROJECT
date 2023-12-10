@@ -3,8 +3,7 @@
 @{
     ViewData["Title"] = "Hotel Reservation Tracker";
     Layout = "~/Views/Shared/_Layout.cshtml";
-    List<Bookings> bookings = _bookingService.GetBookings(100, includeArchived: true);
-}
+    List<Bookings> bookings = _bookingService.GetBookings(100, includeArchived: false);
 }
 
 <style>

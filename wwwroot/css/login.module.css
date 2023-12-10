@@ -30,7 +30,7 @@ header .navbar .controller a {
   z-index: 999;
 }
 header .navbar .controller a#loginLink {
-  color: #fff; /* Default color for other pages */
+  color: #000; /* Default color for other pages */
 }
 header .navbar .controller body.login a#loginLink,
 header .navbar .controller body.register a#loginLink {

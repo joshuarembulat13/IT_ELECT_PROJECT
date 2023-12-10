@@ -2,6 +2,7 @@ using Finals.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore; // Add this line
 using Finals.Models;
+using System.ComponentModel.DataAnnotations;
 
 namespace Finals.Controllers
 {
@@ -84,6 +85,7 @@ namespace Finals.Controllers
             // If ModelState is not valid or an exception occurred, return to the form with validation or error messages
             return View("Booking", CreateBookingTuple(null, booking));
         }
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult UpdateBooking(Bookings updatedBooking)
@@ -92,6 +94,37 @@ namespace Finals.Controllers
             {
                 if (ModelState.IsValid)
                 {
+                    // Additional validation for PhoneNumber
+                    if (string.IsNullOrEmpty(updatedBooking.PhoneNumber) || !IsNumeric(updatedBooking.PhoneNumber) || updatedBooking.PhoneNumber.Length != 11)
+                    {
+                        TempData["ErrorMessageD"] = "Phone Number must be a numeric value and should be 11 digits long.";
+                        return View("Booking", CreateBookingTuple(null, updatedBooking));
+                    }
+
+                    if (string.IsNullOrEmpty(updatedBooking.Email) || !new EmailAddressAttribute().IsValid(updatedBooking.Email))
+                    {
+                        TempData["ErrorMessageE"] = "Invalid Email Address.";
+                        return View("Booking", CreateBookingTuple(null, updatedBooking));
+                    }
+
+                    if (string.IsNullOrEmpty(updatedBooking.FirstName) || updatedBooking.FirstName.Any(char.IsDigit))
+                    {
+                        TempData["ErrorMessageF"] = "Invalid First Name";
+                        return View("Booking", CreateBookingTuple(null, updatedBooking));
+                    }
+
+                    if (string.IsNullOrEmpty(updatedBooking.LastName) || updatedBooking.LastName.Any(char.IsDigit))
+                    {
+                        TempData["ErrorMessageG"] = "Invalid Last Name";
+                        return View("Booking", CreateBookingTuple(null, updatedBooking));
+                    }
+
+                    if (string.IsNullOrEmpty(updatedBooking.Citizenship) || updatedBooking.Citizenship.Any(char.IsDigit))
+                    {
+                        TempData["ErrorMessageH"] = "Invalid Citizenship";
+                        return View("Booking", CreateBookingTuple(null, updatedBooking));
+                    }
+
 
                     // Save the booking to the database
                     _bookingService.SaveBooking(updatedBooking);
@@ -114,6 +147,13 @@ namespace Finals.Controllers
             // If ModelState is not valid or an exception occurred, return to the form with validation or error messages
             return View("Booking", CreateBookingTuple(null, updatedBooking));
         }
+
+        // Helper method to check if a string is numeric
+        private bool IsNumeric(string value)
+        {
+            return long.TryParse(value, out _);
+        }
+
 
 
         [HttpPost]

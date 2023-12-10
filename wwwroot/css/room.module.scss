@@ -3,519 +3,525 @@
 @import url("https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap");
 
 * {
-   padding: 0;
-   margin: 0;
-   box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
 }
 
 html,
 body {
-   &::-webkit-scrollbar {
-      width: 5px;
-   }
+    &::-webkit-scrollbar {
+        width: 5px;
+    }
 
-   &::-webkit-scrollbar-thumb {
-      background-color: #ccc;
-      border-radius: 100px;
-   }
+    &::-webkit-scrollbar-thumb {
+        background-color: #ccc;
+        border-radius: 100px;
+    }
 }
 
 header {
-   position: relative;
+    .navbar {
+        width: 100%;
+        height: 100px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        background-color: transparent;
+        padding: 10px;
+        position: absolute;
 
-   .navbar {
-      width: 100%;
-      height: 100px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      background-color: transparent;
-      padding: 10px;
-      position: absolute;
+        .controller {
+            width: 100%;
+            display: flex;
+            justify-content: flex-end;
+            gap: 20px;
+            padding: 0 20px;
 
-      .controller {
-         width: 100%;
-         display: flex;
-         justify-content: flex-end;
-         gap: 20px;
-         padding: 0 20px;
+            a {
+                background-color: transparent;
+                border: none;
+                cursor: pointer;
+                font-size: 16px;
+                text-decoration: none;
+                font-family: "Oxygen";
+                color: #fff;
+                z-index: 999;
+            }
 
-         a {
-            background-color: transparent;
-            border: none;
-            cursor: pointer;
-            font-size: 16px;
-            text-decoration: none;
-            font-family: "Oxygen";
-            color: #fff;
-            z-index: 999;
-         }
-
-         a#swiftHotelLink {
-            color: #fff; /* Default color for other pages */
-         }
-         /* Additional styling for login and register pages */
-         body.login a#loginLink,
-         body.register a#loginLink {
-            color: #000; /* Change color for login and register pages */
-         }
-      }
-   }
+            a#swiftHotelLink {
+                color: #000; /* Default color for other pages */
+            }
+            /* Additional styling for login and register pages */
+            body.login a#loginLink,
+            body.register a#loginLink {
+                color: #000; /* Change color for login and register pages */
+            }
+        }
+    }
 }
 
 .main {
-   width: 100%;
-   height: 600px;
-   background-color: #000;
-   display: flex;
-   justify-content: center;
-   align-items: center;
-   padding: 10px;
-   position: relative;
-   flex-direction: column;
+    width: 100%;
+    height: 600px;
+    background-color: #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    position: relative;
+    flex-direction: column;
 
-   @media screen and (max-width: 1200px) {
-      width: 100%;
-      height: auto;
-   }
+    @media screen and (max-width: 1200px) {
+        width: 100%;
+        height: auto;
+    }
 
-   .focusContainer {
-      width: 100%;
-      height: 600px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-direction: column;
+    .focusContainer {
+        width: 100%;
+        height: 600px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
 
-      h2 {
-         font-size: 2rem;
-         z-index: 999;
-         font-family: "Poppins";
-         color: #fff;
-         text-align: center;
-      }
+        h1 {
+            font-size: 2rem;
+            z-index: 999;
+            font-family: "Poppins";
+            color: #fff;
+            text-align: center;
+        }
 
-      p {
-         width: 100%;
-         text-align: center;
-         color: #fff;
-         opacity: 1;
-         font-size: 1rem;
-         font-family: "Oxygen";
-      }
+        h2 {
+            font-size: 2rem;
+            z-index: 999;
+            font-family: "Poppins";
+            color: #fff;
+            text-align: center;
+        }
 
-      @media screen and (max-width: 1200px) {
-         height: 450px;
-         display: flex;
-         align-items: center;
-         justify-content: center;
-         position: relative;
+        p {
+            width: 100%;
+            text-align: center;
+            color: #fff;
+            opacity: 1;
+            font-size: 1rem;
+            font-family: "Oxygen";
+        }
 
-         .fc {
-            height: 500px;
+        @media screen and (max-width: 1200px) {
+            height: 450px;
             display: flex;
             align-items: center;
             justify-content: center;
-            flex-direction: column;
-            position: absolute;
-            top: 65px;
-         }
+            position: relative;
 
-         h2 {
-            font-size: 1.4rem;
-         }
-
-         p {
-            display: none;
-         }
-      }
-   }
-
-   .bookingContainer {
-      width: 800px;
-      height: 80px;
-      z-index: 999;
-      position: absolute;
-      bottom: -40px;
-      background-color: #fff;
-      display: flex;
-      padding: 0 10px;
-      align-items: center;
-      border-radius: 5px;
-      box-shadow: 0px 0px 3px 0px #ccc;
-
-      form {
-         width: 100%;
-         display: flex;
-         align-items: center;
-         justify-content: center;
-         gap: 20px;
-         width: 100%;
-
-         .startDate,
-         .endDate,
-         .pax {
-            display: flex;
-            flex-direction: column;
-            gap: 5px;
-
-            label {
-               font-family: "Oxygen";
+            .fc {
+                height: 500px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                flex-direction: column;
+                position: absolute;
+                top: 65px;
             }
 
-            input[type="date"] {
-               width: 200px;
-               height: 30px;
-               font-family: "Oxygen";
-               box-shadow: 0px 0px 3px 0px #ccc;
-               border: none;
-               padding: 0 5px;
+            h2 {
+                font-size: 1.4rem;
             }
 
-            input[type="number"] {
-               width: 100px;
-               height: 30px;
-               font-family: "Oxygen";
-               box-shadow: 0px 0px 3px 0px #ccc;
-               border: none;
-               padding: 0 5px;
+            p {
+                display: none;
             }
-         }
+        }
+    }
 
-         button {
-            width: 150px;
-            height: 50px;
-            background-color: #ffd700;
-            border-radius: 3px;
-            font-weight: 600;
-            border: none;
-            color: #000;
-            cursor: pointer;
-         }
-      }
+    .bookingContainer {
+        width: 800px;
+        height: 80px;
+        z-index: 999;
+        position: absolute;
+        bottom: -40px;
+        background-color: #fff;
+        display: flex;
+        padding: 0 10px;
+        align-items: center;
+        border-radius: 5px;
+        box-shadow: 0px 0px 3px 0px #ccc;
 
-      @media screen and (max-width: 1200px) {
-         width: 100%;
-         height: auto;
-         position: relative;
-
-         form {
+        form {
             width: 100%;
-            height: 350px;
             display: flex;
-            align-items: flex-start;
-            flex-direction: column;
+            align-items: center;
             justify-content: center;
-            padding: 20px;
+            gap: 20px;
+            width: 100%;
 
             .startDate,
             .endDate,
             .pax {
-               width: 100%;
+                display: flex;
+                flex-direction: column;
+                gap: 5px;
 
-               input[type="date"] {
-                  width: 100%;
-               }
+                label {
+                    font-family: "Oxygen";
+                }
 
-               input[type="number"] {
-                  width: 100%;
-               }
+                input[type="date"] {
+                    width: 200px;
+                    height: 30px;
+                    font-family: "Oxygen";
+                    box-shadow: 0px 0px 3px 0px #ccc;
+                    border: none;
+                    padding: 0 5px;
+                }
+
+                input[type="number"] {
+                    width: 100px;
+                    height: 30px;
+                    font-family: "Oxygen";
+                    box-shadow: 0px 0px 3px 0px #ccc;
+                    border: none;
+                    padding: 0 5px;
+                }
             }
 
             button {
-               width: 100%;
+                width: 150px;
+                height: 50px;
+                background-color: #ffd700;
+                border-radius: 3px;
+                font-weight: 600;
+                border: none;
+                color: #000;
+                cursor: pointer;
             }
-         }
-      }
-   }
+        }
 
-   &::before {
-      content: "";
-      background-repeat: no-repeat;
-      background-position: center;
-      background-size: cover;
-      background-image: url("../images/background.jpg");
-      display: block;
-      opacity: 0.3;
-      position: absolute;
-      inset: 0;
-   }
+        @media screen and (max-width: 1200px) {
+            width: 100%;
+            height: auto;
+            position: relative;
+
+            form {
+                width: 100%;
+                height: 350px;
+                display: flex;
+                align-items: flex-start;
+                flex-direction: column;
+                justify-content: center;
+                padding: 20px;
+
+                .startDate,
+                .endDate,
+                .pax {
+                    width: 100%;
+
+                    input[type="date"] {
+                        width: 100%;
+                    }
+
+                    input[type="number"] {
+                        width: 100%;
+                    }
+                }
+
+                button {
+                    width: 100%;
+                }
+            }
+        }
+    }
+
+    &::before {
+        content: "";
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+        background-image: url("../images/background.jpg");
+        display: block;
+        opacity: 0.3;
+        position: absolute;
+        inset: 0;
+    }
 }
 
 .about {
-   width: 100%;
-   height: auto;
+    width: 100%;
+    height: auto;
 
-   .title {
-      width: 100%;
-      height: 70px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+    .title {
+        width: 100%;
+        height: 70px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
 
-      h2 {
-         font-family: "Poppins";
-         font-size: 2rem;
-      }
-   }
-
-   .aboutContainer {
-      width: 100%;
-      display: flex;
-      padding: 20px;
-
-      @media screen and (max-width: 1200px) {
-         flex-direction: column;
-         height: auto;
-
-         .imageContainer {
-            display: none;
-         }
-
-         div {
-            .detachContainer {
-               width: 100%;
-               height: 100%;
-               position: relative;
-               padding: 0;
-
-               h2 {
-                  font-size: 1.6rem;
-               }
-
-               button {
-                  height: 60px;
-               }
-            }
-         }
-      }
-
-      div {
-         width: 100%;
-         height: auto;
-         padding: 10px;
-         display: flex;
-         justify-content: flex-start;
-         gap: 20px;
-         position: relative;
-      }
-
-      .detachContainer {
-         border-radius: 3px;
-         padding: 20px 30px;
-         height: 450px;
-         width: 750px;
-         background-color: #fff;
-         display: flex;
-         align-items: center;
-         justify-content: center;
-         flex-direction: column;
-         border-radius: 5px;
-
-         h2 {
+        h2 {
             font-family: "Poppins";
-            font-size: 1.8rem;
-            font-weight: 300;
-         }
+            font-size: 2rem;
+        }
+    }
 
-         p {
-            font-size: 17px;
-            font-family: "Oxygen";
-         }
+    .aboutContainer {
+        width: 100%;
+        display: flex;
+        padding: 20px;
 
-         button {
-            width: 100%;
-            height: 50px;
-            background-color: #ffd700;
-            border: none;
-            color: #000;
-            border-radius: 3px;
-            font-weight: 600;
-            font-size: 16px;
-            font-family: "Oxygen";
-         }
-      }
-   }
-}
+        @media screen and (max-width: 1200px) {
+            flex-direction: column;
+            height: auto;
 
-.roomType {
-   width: 100%;
-   height: auto;
-   padding: 10px;
-   display: flex;
-   align-items: center;
-   flex-direction: column;
-   padding: 10px;
-
-   .title {
-      width: 100%;
-      height: 150px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-direction: column;
-
-      h2 {
-         font-family: "Poppins";
-         font-size: 2rem;
-      }
-
-      p {
-         width: 900px;
-         font-size: 1.2rem;
-         text-align: center;
-      }
-   }
-
-   @media screen and (max-width: 1200px) {
-      h2 {
-         font-size: 1.8rem;
-      }
-
-      p {
-         width: 200px;
-         font-size: 1rem;
-      }
-   }
-
-   @media screen and (max-width: 1200px) {
-      .title {
-         h2 {
-            font-size: 1.8rem;
-         }
-
-         p {
-            width: auto;
-            font-size: 1rem;
-            padding: 0 20px;
-         }
-      }
-   }
-
-   .roomContainer {
-      width: 100%;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, 400px);
-      justify-content: center;
-      align-items: center;
-      gap: 20px;
-
-      @media screen and (max-width: 600px) {
-         padding: 40px;
-
-         .box {
-            padding: 20px;
-
-            .night {
-               padding: 0 20px;
+            .imageContainer {
+                display: none;
             }
-         }
-      }
 
-      .box {
-         width: 400px;
-         height: auto;
-         display: flex;
-         flex-direction: column;
-         gap: 20px;
-         padding: 10px;
-         border: 1px solid #ccc;
+            div {
+                .detachContainer {
+                    width: 100%;
+                    height: 100%;
+                    position: relative;
+                    padding: 0;
 
-         &:hover {
-            box-shadow: 0px 0px 3px 0px #ccc;
-         }
+                    h2 {
+                        font-size: 1.6rem;
+                    }
 
-         .night {
+                    button {
+                        height: 60px;
+                    }
+                }
+            }
+        }
+
+        div {
+            width: 100%;
+            height: auto;
+            padding: 10px;
+            display: flex;
+            justify-content: flex-start;
+            gap: 20px;
+            position: relative;
+        }
+
+        .detachContainer {
+            border-radius: 3px;
+            padding: 20px 30px;
+            height: 450px;
+            width: 750px;
+            background-color: #fff;
             display: flex;
             align-items: center;
-            justify-content: space-between;
-
-            span {
-               text-align: center;
-               font-size: 16px;
-               font-family: "Oxygen";
-            }
-         }
-
-         a {
-            text-decoration: none; /* Remove underline */
-            color: black; /* Set the color to black or your preferred color */
-         }
-      }
-   }
-}
-
-.faqss {
-   width: 100%;
-   height: auto;
-   padding: 10px;
-   display: flex;
-   align-items: center;
-   flex-direction: column;
-   padding: 10px;
-
-   .title {
-      width: 100%;
-      height: 150px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-direction: column;
-
-      h2 {
-         font-family: "Poppins";
-         font-size: 1.8rem;
-      }
-
-      @media screen and (max-width: 600px) {
-         h2 {
-            text-align: center;
-            font-size: 2rem;
-         }
-      }
-   }
-
-   .faqsFlexContainer {
-      width: 100%;
-      display: flex;
-      flex-direction: column;
-      justify-content: centerw;
-      align-items: center;
-      gap: 10px;
-      padding: 0 20px;
-
-      .faqsCard {
-         width: 500px;
-         height: auto;
-         display: flex;
-         flex-direction: column;
-         padding: 15px 20px;
-         gap: 5px;
-
-         @media screen and (max-width: 600px) {
-            width: 100%;
-            padding: 10px;
+            justify-content: center;
+            flex-direction: column;
+            border-radius: 5px;
 
             h2 {
-               font-family: "Poppins";
-               font-size: 16px;
+                font-family: "Poppins";
+                font-size: 1.8rem;
+                font-weight: 300;
             }
 
             p {
-               width: auto;
-               font-size: 1rem;
+                font-size: 17px;
+                font-family: "Oxygen";
             }
-         }
 
-         h2 {
+            button {
+                width: 700px;
+                height: 65px;
+                background-color: #ffd700;
+                border: none;
+                color: #000;
+                border-radius: 3px;
+                font-weight: 600;
+                font-size: 16px;
+                font-family: "Oxygen";
+            }
+        }
+    }
+}
+
+.roomType {
+    width: 100%;
+    height: auto;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding: 10px;
+
+    .title {
+        width: 100%;
+        height: 150px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+
+        h2 {
             font-family: "Poppins";
-            font-size: 1.3rem;
-         }
+            font-size: 2rem;
+        }
 
-         p {
-            width: auto;
+        p {
+            width: 900px;
             font-size: 1.2rem;
-         }
-      }
-   }
+            text-align: center;
+        }
+    }
+
+    @media screen and (max-width: 1200px) {
+        h2 {
+            font-size: 1.8rem;
+        }
+
+        p {
+            width: 200px;
+            font-size: 1rem;
+        }
+    }
+
+    @media screen and (max-width: 1200px) {
+        .title {
+            h2 {
+                font-size: 1.8rem;
+            }
+
+            p {
+                width: auto;
+                font-size: 1rem;
+                padding: 0 20px;
+            }
+        }
+    }
+
+    .roomContainer {
+        width: 100%;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, 400px);
+        justify-content: center;
+        align-items: center;
+        gap: 20px;
+
+        @media screen and (max-width: 600px) {
+            padding: 40px;
+
+            .box {
+                padding: 20px;
+
+                .night {
+                    padding: 0 20px;
+                }
+            }
+        }
+
+        .box {
+            width: 400px;
+            height: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            padding: 10px;
+            border: 1px solid #ccc;
+
+            &:hover {
+                box-shadow: 0px 0px 3px 0px #ccc;
+            }
+
+            .night {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+
+                span {
+                    text-align: center;
+                    font-size: 16px;
+                    font-family: "Oxygen";
+                }
+            }
+
+            a {
+                text-decoration: none; /* Remove underline */
+                color: black; /* Set the color to black or your preferred color */
+            }
+        }
+    }
+}
+
+.faqss {
+    width: 100%;
+    height: auto;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding: 10px;
+
+    .title {
+        width: 100%;
+        height: 150px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+
+        h2 {
+            font-family: "Poppins";
+            font-size: 1.8rem;
+        }
+
+        @media screen and (max-width: 600px) {
+            h2 {
+                text-align: center;
+                font-size: 2rem;
+            }
+        }
+    }
+
+    .faqsFlexContainer {
+        width: 900px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+        padding: 0 20px;
+
+        .faqsCard {
+            width: 900px;
+            height: auto;
+            display: flex;
+            flex-direction: column;
+            padding: 15px 20px;
+            gap: 5px;
+
+            @media screen and (max-width: 600px) {
+                width: 900px;
+                padding: 10px;
+
+                h2 {
+                    font-family: "Poppins";
+                    font-size: 16px;
+                }
+
+                p {
+                    width: auto;
+                    font-size: 1rem;
+                }
+            }
+
+            h2 {
+                font-family: "Poppins";
+                font-size: 1.3rem;
+            }
+
+            p {
+                width: auto;
+                font-size: 1.2rem;
+            }
+        }
+    }
 }

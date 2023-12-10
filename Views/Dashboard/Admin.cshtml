@@ -42,6 +42,7 @@
         <table>
             <thead>
                 <tr>
+                    <th>Booking ID</th>
                     <th>Name</th>
                     <th>Check-In</th>
                     <th>Check-Out</th>
@@ -56,6 +57,7 @@
                     @foreach (var elements in bookings)
                     {
                         <tr>
+                            <td>@elements.Id</td>
                             <td>@elements.FirstName @elements.LastName</td>
                             <td>@elements.StartDate.ToString("MMM dd")</td>
                             <td>@elements.EndDate.ToString("MMM dd")</td>

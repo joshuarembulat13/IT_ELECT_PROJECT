@@ -103,11 +103,25 @@
 .form form .fullname .lastName,
 .form form .fullname .citizenship,
 .form form .fullname .phoneNumber {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
 }
+.alert {
+  position: relative;
+  padding: 1rem 1rem;
+  margin-bottom: 1rem;
+  border: 1px solid transparent;
+  border-radius: 0.25rem;
+}
+
+.alert-danger {
+  color: #842029;
+  background-color: #f8d7da;
+  border-color: #f5c2c7;
+}
+
 .form form button {
   width: 100%;
   height: 50px;

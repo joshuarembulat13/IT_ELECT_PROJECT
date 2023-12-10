@@ -4,6 +4,14 @@
 @{
     ViewBag.Title = "StandardRoom";
 }
+<style>
+    /* Add this style block in your HTML or link to an external stylesheet */
+
+    /* Hide only the apax div */
+    form .apax {
+        display: none !important;
+    }
+</style>
 
 <link rel="stylesheet" type="text/css" href="~/css/room.module.css" />
 <div class="main">
@@ -11,17 +19,12 @@
         <div class="fc">
             <h2>Standard Room</h2>
             <p>
-                a luxurious retreat nestled in the heart of the city, offering a seamless blend of modern elegance and
-                timeless
-                charm. With its sophisticated decor, impeccable service, and state-of-the-art amenities, guests are
-                treated
-                to
-                an indulgent experience that reflects the epitome of comfort and style.
             </p>
         </div>
     </div>
+
     <div class="bookingContainer">
-        <form id="bookingForm" action="@Url.Action("SaveBooking", "Booking")" method="post">
+        <form id="bookingForm" action="@Url.Action("SaveUnverifiedBooking", "Booking")" method="post">
             <div class="startDate">
                 <label>Start Date</label>
                 <input type="date" id="myStartInputDate" name="StartDate" />
@@ -46,24 +49,25 @@
     </div>
     <div class="aboutContainer">
         <div class="imageContainer">
-            <img src="@Url.Content("../images/bgabout.jpg")" height="700px" width="100%" />
+            <img src="@Url.Content("../images/room1.jpg")" height="700px" width="100%" />
         </div>
         <div>
             <div class="detachContainer">
-                <h2>Unwind in Style, Where Every Stay is a Symphony of Comfort and Convenience</h2>
+                <h2>Effortless Comfort for Every Journey</h2>
                 <p>
-                    Discover a realm of convenience and sophistication with our range of exceptional amenities. Immerse
-                    yourself in the tranquility of our lush swimming pool area, a haven of relaxation where the world's
-                    worries fade away. Enjoy seamless connectivity with high-speed Wi-Fi throughout the property,
-                    keeping
-                    you in touch with the outside world even as you revel in the hotel's opulent surroundings. Swift
-                    Hotel's
-                    commitment to comfort is further exemplified by our complimentary parking, providing a stress-free
-                    experience from the moment you arrive. Whether you're seeking a serene escape or a productive
-                    sanctuary,
+                    Experience comfort and convenience in our Standard Room.
+                    Thoughtfully designed with your needs in mind, this room offers a cozy retreat for both business and leisure travelers.
+                    Enjoy modern amenities, a plush bed, and a relaxing ambiance that sets the perfect tone for your stay.
                     Swift Hotel promises an unparalleled journey into luxury.
                 </p>
-                <button>Book Now</button>
+                <form action="@Url.Action("SaveUnverifiedBooking", "Booking")" method="post">
+                    <div class="apax">
+                        <label>Pax</label>
+                        <input type="number" id="enterPax" name="Pax" />
+                    </div>
+                    <button type="submit">Book Now</button>
+                    @Html.AntiForgeryToken()
+                </form>
             </div>
         </div>
     </div>
@@ -79,54 +83,52 @@
     </div>
     <div class="roomContainer">
         <div class="box">
-            <img src="@Url.Content("../images/room1.jpg")"
-                 style="object-fit: cover; width: 380px; height: 250px; object-position: center;" />
-            <div class="night">
-                <span>Standard Room</span>
-                <span>
-                    @string.Format("₱{0:N2}", 2400)/night
-                </span>
-            </div>
+            <a href="@Url.Action("StandardRoom", "Room")" style="text-decoration: none; color: black;">
+                <img src="@Url.Content("../images/room1.jpg")"
+                     style="object-fit: cover; width: 380px; height: 250px; object-position: center;" />
+                <div class="night">
+                    <span>Standard Room</span>
+                    <span>
+                        @string.Format("₱{0:N2}", 1000)/night
+                    </span>
+                </div>
+            </a>
         </div>
         <div class="box">
-            <img src="@Url.Content("../images/room2.jpg")"
-                 style="object-fit: cover; width: 380px; height: 250px; object-position: center;" />
-            <div class="night">
-                <span>Deluxe Room</span>
-                <span>
-                    @string.Format("₱{0:N2}", 2400)/night
-                </span>
-            </div>
+            <a href="@Url.Action("DeluxeRoom", "Room")" style="text-decoration: none; color: black;">
+                <img src="@Url.Content("../images/room2.jpg")"
+                     style="object-fit: cover; width: 380px; height: 250px; object-position: center;" />
+                <div class="night">
+                    <span>Deluxe Room</span>
+                    <span>
+                        @string.Format("₱{0:N2}", 1500)/night
+                    </span>
+                </div>
+            </a>
         </div>
         <div class="box">
-            <img src="@Url.Content("../images/room3.jpg")"
-                 style="object-fit: cover; width: 380px; height: 250px; object-position: center;" />
-            <div class="night">
-                <span>Supreme Room</span>
-                <span>
-                    @string.Format("₱{0:N2}", 2400)/night
-                </span>
-            </div>
+            <a href="@Url.Action("SupremeRoom", "Room")" style="text-decoration: none; color: black;">
+                <img src="@Url.Content("../images/room3.jpg")"
+                     style="object-fit: cover; width: 380px; height: 250px; object-position: center;" />
+                <div class="night">
+                    <span>Supreme Room</span>
+                    <span>
+                        @string.Format("₱{0:N2}", 2000)/night
+                    </span>
+                </div>
+            </a>
         </div>
         <div class="box">
-            <img src="@Url.Content("../images/room4.jpg")"
-                 style="object-fit: cover; width: 380px; height: 250px; object-position: center;" />
-            <div class="night">
-                <span>Standard Room</span>
-                <span>
-                    @string.Format("₱{0:N2}", 2400)/night
-                </span>
-            </div>
-        </div>
-        <div class="box">
-            <img src="@Url.Content("../images/room5.jpg")"
-                 style="object-fit: cover; width: 380px; height: 250px; object-position: center;" />
-            <div class="night">
-                <span>Family Room</span>
-                <span>
-                    @string.Format("₱{0:N2}", 2400)/night
-                </span>
-            </div>
+            <a href="@Url.Action("FamilyRoom", "Room")" style="text-decoration: none; color: black;">
+                <img src="@Url.Content("../images/room4.jpg")"
+                     style="object-fit: cover; width: 380px; height: 250px; object-position: center;" />
+                <div class="night">
+                    <span>Family Room</span>
+                    <span>
+                        @string.Format("₱{0:N2}", 2400)/night
+                    </span>
+                </div>
+            </a>
         </div>
     </div>
 </div>
