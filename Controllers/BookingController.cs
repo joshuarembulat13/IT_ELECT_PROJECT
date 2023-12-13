@@ -94,12 +94,12 @@ namespace Finals.Controllers
             {
                 if (ModelState.IsValid)
                 {
-                    // Additional validation for PhoneNumber
-                    if (string.IsNullOrEmpty(updatedBooking.PhoneNumber) || !IsNumeric(updatedBooking.PhoneNumber) || updatedBooking.PhoneNumber.Length != 11)
+                    if (string.IsNullOrEmpty(updatedBooking.PhoneNumber) || !IsNumeric(updatedBooking.PhoneNumber) || updatedBooking.PhoneNumber.Length != 11 || !updatedBooking.PhoneNumber.StartsWith("09"))
                     {
-                        TempData["ErrorMessageD"] = "Phone Number must be a numeric value and should be 11 digits long.";
+                        TempData["ErrorMessageD"] = "Not a valid Phone Number!";
                         return View("Booking", CreateBookingTuple(null, updatedBooking));
                     }
+
 
                     if (string.IsNullOrEmpty(updatedBooking.Email) || !new EmailAddressAttribute().IsValid(updatedBooking.Email))
                     {

@@ -15,7 +15,7 @@ public enum RoomType
     Standard,
     Deluxe,
     Supreme,
-    Suite,
+    //Suite,
     Family
 
 }

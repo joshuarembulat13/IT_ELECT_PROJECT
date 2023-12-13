@@ -1,3 +1,4 @@
+<!-- Admin.cshtml -->
 @model IEnumerable<Finals.Models.Bookings>;
 @using Finals.Services;
 @inject BookingService _bookingService;
@@ -27,9 +28,9 @@
                     <h2>Supreme</h2>
                     <span>@bookings.Count(i => i.RoomType.Equals(RoomType.Supreme))</span>
                 </div>
-                <div class="box" <h2>Suite</h2>
+                @* <div class="box" <h2>Suite</h2>
                     <span>@bookings.Count(i => i.RoomType.Equals(RoomType.Suite))</span>
-                </div>
+                </div> *@
                 <div class="box">
                     <h2>Family</h2>
                     <span>@bookings.Count(i => i.RoomType.Equals(RoomType.Family))</span>

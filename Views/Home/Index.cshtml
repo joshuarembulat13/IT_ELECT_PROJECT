@@ -1,3 +1,4 @@
+<!-- Home/Index.cshtml -->
 @{
     ViewData["Title"] = "Swift Hotel";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -10,7 +11,7 @@
         display: none !important;
     }
 </style>
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 <div class="main">
     <div class="focusContainer">
         <div class="fc">
@@ -31,14 +32,35 @@
                 <label>Start Date</label>
                 <input type="date" id="myStartInputDate" name="StartDate" />
             </div>
+
             <div class="endDate">
                 <label>End Date</label>
                 <input type="date" id="myEndInputDate" name="EndDate" />
             </div>
+
             <div class="pax">
                 <label>Pax</label>
-                <input type="number" id="enterPax" name="Pax" />
+                <input type="number" id="enterPax" name="Pax" min="1" />
             </div>
+
+            <script>
+                $(document).ready(function () {
+                    var dtToday = new Date();
+                    var month = dtToday.getMonth() + 1;
+                    var day = dtToday.getDate();
+                    var year = dtToday.getFullYear();
+
+                    if (month < 10)
+                        month = '0' + month.toString();
+                    if (day < 10)
+                        day = '0' + day.toString();
+
+                    var maxDate = year + '-' + month + '-' + day;
+
+                    $('#myStartInputDate').attr('min', maxDate);
+                    $('#myEndInputDate').attr('min', maxDate);
+                });
+            </script>
             @Html.AntiForgeryToken()
             <button type="submit">Book Now</button>
         </form>
